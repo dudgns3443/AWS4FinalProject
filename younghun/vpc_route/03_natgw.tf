@@ -17,6 +17,7 @@ resource "aws_route_table" "yhkim_ngrt_web" {
   vpc_id = aws_vpc.yhkim_vpc_web.id
   route {
     cidr_block = var.vpc_cidr_was
+
     vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
   }
 
@@ -33,15 +34,15 @@ resource "aws_route_table" "yhkim_ngrt_web" {
 
 
 resource "aws_route_table_association" "yhkim_ngass" {
-  count          = length(var.cidr_private)
+  count          = length(var.pri_cidr_web)
   subnet_id      = aws_subnet.yh_priweb[count.index].id
-  route_table_id = aws_route_table.yhkim_ngrt.id
+  route_table_id = aws_route_table.yhkim_ngrt_web.id
 }
 
-resource "aws_route_table" "yhkim_ngrt" {
+resource "aws_route_table" "yhkim_ngrt_was" {
   vpc_id = aws_vpc.yhkim_vpc_web.id
   route {
-    cidr_block = var.vpc_cidr_web
+    cidr_block = length(var.pri_cidr_was)
     vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
   }
 
@@ -55,8 +56,8 @@ resource "aws_route_table" "yhkim_ngrt" {
   }
 }
 
-resource "aws_route_table_association" "yhkim_ngass" {
-  count          = length(var.cidr_private)
+resource "aws_route_table_association" "yhkim_ngass_was" {
+  count          = length(var.pri_cidr_was)
   subnet_id      = aws_subnet.yh_priwas[count.index].id
-  route_table_id = aws_route_table.yhkim_ngrt.id
+  route_table_id = aws_route_table.yhkim_ngrt_was.id
 }

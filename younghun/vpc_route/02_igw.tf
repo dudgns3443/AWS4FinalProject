@@ -1,5 +1,5 @@
 resource "aws_internet_gateway" "yhkim_ig" {
-  vpc_id = aws_vpc.yhkim_vpc.id
+  vpc_id = aws_vpc.yhkim_vpc_web.id
 
   tags = {
     "Name" = "yth-ig"

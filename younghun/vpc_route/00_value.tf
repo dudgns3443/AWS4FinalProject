@@ -1,4 +1,4 @@
-variable "seoul" {
+variable "region" {
     type = string
     default = "ap-northeast-2"
 
@@ -48,3 +48,4 @@ variable "route_cidr_global" {
     type = string
     default = "0.0.0.0/0"
 }
+
