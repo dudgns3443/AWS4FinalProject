@@ -13,12 +13,16 @@ resource "aws_nat_gateway" "yhkim_ng" {
   ]
 }
 
-resource "aws_route_table" "sdkim_ngrt" {
-  vpc_id = aws_vpc.sdkim_vpc.id
+resource "aws_route_table" "yhkim_ngrt_web" {
+  vpc_id = aws_vpc.yhkim_vpc_web.id
+  route {
+    cidr_block = var.vpc_cidr_was
+    vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
+  }
 
   route {
-    cidr_block = var.cidr_route
-    gateway_id = aws_nat_gateway.sdkim_ng.id
+    cidr_block = var.route_cidr_global
+    gateway_id = aws_nat_gateway.yhkim_ng.id
   }
 
   tags = {
@@ -26,8 +30,33 @@ resource "aws_route_table" "sdkim_ngrt" {
   }
 }
 
-resource "aws_route_table_association" "sdkim_ngass" {
+
+
+resource "aws_route_table_association" "yhkim_ngass" {
   count          = length(var.cidr_private)
-  subnet_id      = aws_subnet.sdkim_pri[count.index].id
-  route_table_id = aws_route_table.sdkim_ngrt.id
+  subnet_id      = aws_subnet.yh_priweb[count.index].id
+  route_table_id = aws_route_table.yhkim_ngrt.id
+}
+
+resource "aws_route_table" "yhkim_ngrt" {
+  vpc_id = aws_vpc.yhkim_vpc_web.id
+  route {
+    cidr_block = var.vpc_cidr_web
+    vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
+  }
+
+  route {
+    cidr_block = var.route_cidr_global
+    gateway_id = aws_nat_gateway.yhkim_ng.id
+  }
+
+  tags = {
+    "Name" = "${var.name}-ngrt"
+  }
+}
+
+resource "aws_route_table_association" "yhkim_ngass" {
+  count          = length(var.cidr_private)
+  subnet_id      = aws_subnet.yh_priwas[count.index].id
+  route_table_id = aws_route_table.yhkim_ngrt.id
 }

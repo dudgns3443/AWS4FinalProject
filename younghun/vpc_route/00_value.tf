@@ -44,7 +44,7 @@ variable "az" {
     default = ["a","c"]
 }
 
-variable "route_cidr" {
+variable "route_cidr_global" {
     type = string
     default = "0.0.0.0/0"
 }
