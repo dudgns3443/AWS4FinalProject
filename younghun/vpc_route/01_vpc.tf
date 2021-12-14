@@ -5,10 +5,12 @@ provider "aws"{
 
 resource "aws_vpc" "yhkim_vpc_web" {
   cidr_block = "10.10.0.0/16"  
+  enable_dns_hostnames = true
 }
 
 resource "aws_vpc" "yhkim_vpc_was" {
   cidr_block = "10.20.0.0/16"  
+  enable_dns_hostnames = true
 }
 
 resource "aws_vpc_peering_connection" "vpc_peering" {

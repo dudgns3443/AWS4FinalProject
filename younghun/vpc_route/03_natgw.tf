@@ -40,16 +40,16 @@ resource "aws_route_table_association" "yhkim_ngass" {
 }
 
 resource "aws_route_table" "yhkim_ngrt_was" {
-  vpc_id = aws_vpc.yhkim_vpc_web.id
+  vpc_id = aws_vpc.yhkim_vpc_was.id
   route {
-    cidr_block = length(var.pri_cidr_was)
+    cidr_block = var.vpc_cidr_web
     vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
   }
 
-  route {
-    cidr_block = var.route_cidr_global
-    gateway_id = aws_nat_gateway.yhkim_ng.id
-  }
+  # route {
+  #   cidr_block = var.route_cidr_global
+  #   gateway_id = aws_nat_gateway.yhkim_ng.id
+  # }
 
   tags = {
     "Name" = "${var.name}-ngrt"
