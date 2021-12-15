@@ -21,7 +21,7 @@ resource "aws_instance" "bastion" {
   availability_zone = "${var.region}${var.az[0]}"
   private_ip = var.bastion_pip
   subnet_id = aws_subnet.A4_pub[0].id
-  user_data = file("./ssh.sh")
+  # user_data = file("./ssh.sh")
   tags = {
     "Name" = "Bastion"
   }
