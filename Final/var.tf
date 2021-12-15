@@ -20,6 +20,7 @@ variable "vpc_cidr_was" {
     default = "10.20.0.0/16" 
 }
 
+
 variable "key" {
     type = string
     default = "A4_key"
@@ -43,6 +44,12 @@ variable "pri_cidr_was" {
     type = list
     default = ["10.20.0.0/24","10.20.1.0/24"]
 }
+
+variable "pub_cidr_was" {
+    type = list
+    default = ["10.20.10.0/24","10.20.11.0/24"]
+}
+
 variable "db_cidr" {
     type = list
     default = ["10.20.2.0/24","10.20.3.0/24"]

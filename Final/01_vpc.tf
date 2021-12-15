@@ -46,6 +46,16 @@ resource "aws_subnet" "A4_priweb" {
   }
 }
 
+resource "aws_subnet" "A4_pubwas" {
+  count = length(var.pub_cidr_was)
+  vpc_id            = aws_vpc.A4_vpc_was.id
+  cidr_block        = var.pub_cidr_was[count.index]
+  availability_zone = "${var.region}${var.az[count.index]}"
+  tags = {
+    "Name" = "${var.name}-pub${var.az[count.index]}"
+  }
+}
+
 resource "aws_subnet" "A4_priwas" {
   count = length(var.pri_cidr_was)
   vpc_id            = aws_vpc.A4_vpc_was.id
