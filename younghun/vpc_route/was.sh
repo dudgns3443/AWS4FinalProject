@@ -1,0 +1,65 @@
+#!/bin/bash
+
+##### nginx
+sudo -i
+yum -y update
+sudo amazon-linux-extras install nginx1 -y
+systemctl enable nginx
+service nginx start
+
+##### Apache
+#sudo -i
+#sudo yum install -y httpd
+#sudo systemctl start httpd
+#sudo systemctl enable httpd
+
+# /etc/ssh/sshd_config 파일 수정 Line 17,38, 63
+sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+
+cat > ~/.ssh/key.pub << EOF
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+EOF
+chmod 400 ~/.ssh/key.pub
+
+yum install -y git
+git clone https://github.com/dudgns3443/HealthCare.git
+cp -rf HealthCare/* /usr/share/nginx/html/

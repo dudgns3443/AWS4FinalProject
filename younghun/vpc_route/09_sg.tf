@@ -1,13 +1,24 @@
 resource "aws_security_group" "yh_websg" {
     name = "yh-WEB-SG"
     description = "web sequrity group"
-    vpc_id = aws_vpc.yhkim_vpc.id
+    vpc_id = aws_vpc.yhkim_vpc_web.id
 
     ingress = [
         {
             description = "ssh"
             from_port = "22"
             to_port = "22"
+            protocol = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+            ipv6_cidr_blocks = ["::/0"]
+            prefix_list_ids = null
+            security_groups = null
+            self = null
+        },
+        {
+            description = "was"
+            from_port = "8100"
+            to_port = "8100"
             protocol = "tcp"
             cidr_blocks = ["0.0.0.0/0"]
             ipv6_cidr_blocks = ["::/0"]

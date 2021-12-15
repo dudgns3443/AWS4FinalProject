@@ -58,7 +58,7 @@ resource "aws_subnet" "yh_priwas" {
   tags = {
     "Name" = "${var.name}-pri${var.az[count.index]}"
   }
-}
+} 
 
 resource "aws_subnet" "yh_pridb" {
   count = length(var.db_cidr)
