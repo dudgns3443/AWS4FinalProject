@@ -1,12 +1,12 @@
-variable "access_key" {
-    type = string
-    default = ""
-}
+# variable "access_key" {
+#     type = string
+#     default = ""
+# }
 
-variable "secret_key" {
-    type = string
-    default = ""
-}
+# variable "secret_key" {
+#     type = string
+#     default = ""
+# }
 
 variable "region" {
     type = string
@@ -23,12 +23,12 @@ variable "vpc_cidr_was" {
 
 variable "key" {
     type = string
-    default = "A4_key"
+    default = "a4_key"
 }
 
 variable "name" {
     type = string
-    default = "A4"
+    default = "a4"
 }
 
 variable "pub_cidr" {
@@ -248,7 +248,7 @@ variable "db_identifier" {
 
 variable "db_user" {
     type = string
-    default = "A4"
+    default = "a4"
 }
 
 variable "db_passwd" {

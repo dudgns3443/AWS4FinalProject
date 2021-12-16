@@ -1,4 +1,4 @@
-# resource "aws_db_instance" "A4_final_db" {
+# resource "aws_db_instance" "a4_final_db" {
 #     allocated_storage = var.db_allocated_storage
 #     storage_type = var.db_storage_type
 #     engine = var.db_engine
@@ -11,7 +11,7 @@
 #     parameter_group_name = var.db_parameter_group_name
 #     availability_zone = "${var.region}${var.az[0]}"
 #     # multi_az = true
-#     db_subnet_group_name = aws_db_subnet_group.A4_dbsg.id
+#     db_subnet_group_name = aws_db_subnet_group.a4_dbsg.id
 #     vpc_security_group_ids = [aws_security_group.db_sg.id]
 #     skip_final_snapshot = true
 #     tags = {
@@ -19,9 +19,9 @@
 #     }
 # }
 
-# resource "aws_db_subnet_group" "A4_dbsg" {
+# resource "aws_db_subnet_group" "a4_dbsg" {
 #     name = "a4-dbsg"
-#     subnet_ids = [aws_subnet.A4_pridb[0].id,aws_subnet.A4_pridb[1].id]
+#     subnet_ids = [aws_subnet.a4_pridb[0].id,aws_subnet.a4_pridb[1].id]
 #     tags = {
 #         "Name" = "a4-dbsg"
 #     }

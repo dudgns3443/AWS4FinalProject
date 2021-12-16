@@ -1,40 +1,46 @@
 # vpc1 natgateway용 EIP
-resource "aws_eip" "A4_eip_ng" {
+resource "aws_eip" "a4_eip_ng_web" {
   vpc = true
+  tags = {
+    "Name" = "a4-ng-web"
+  }
 }
 
 # vpc2 natgateway용 EIP
-resource "aws_eip" "A4_eip_ng_02" {
+resource "aws_eip" "a4_eip_ng_was" {
   vpc = true
+  tags = {
+    "Name" = "a4-ng-was"
+  }
 }
 
 # vpc1 natgateway
-resource "aws_nat_gateway" "A4_ng" {
-  allocation_id = aws_eip.A4_eip_ng.id
-  subnet_id     = aws_subnet.A4_pub[0].id
+resource "aws_nat_gateway" "a4_ng_web" {
+  allocation_id = aws_eip.a4_eip_ng_web.id
+  subnet_id     = aws_subnet.a4_pub[0].id
   tags = {
-    "Name" = "${var.name}-ng"
+    "Name" = "${var.name}-ng-web"
   }
   depends_on = [
-    aws_internet_gateway.A4_ig
+    aws_internet_gateway.a4_ig_web
   ]
 }
 
 # vpc2 natgateway
-resource "aws_nat_gateway" "A4_ng_02" {
-  allocation_id = aws_eip.A4_eip_ng_02.id
-  subnet_id     = aws_subnet.A4_pubwas[0].id
+resource "aws_nat_gateway" "a4_ng_was" {
+  allocation_id = aws_eip.a4_eip_ng_was.id
+  subnet_id     = aws_subnet.a4_pubwas[0].id
   tags = {
-    "Name" = "${var.name}-ng"
+    "Name" = "${var.name}-ng-was"
   }
   depends_on = [
-    aws_internet_gateway.A4_ig_02
+    aws_internet_gateway.a4_ig_was
   ]
 }
 
 # web private route table
-resource "aws_route_table" "A4_ngrt_web" {
-  vpc_id = aws_vpc.A4_vpc_web.id
+resource "aws_route_table" "a4_ngrt_web" {
+  vpc_id = aws_vpc.a4_vpc_web.id
   route {
     cidr_block = var.vpc_cidr_was
 
@@ -43,26 +49,26 @@ resource "aws_route_table" "A4_ngrt_web" {
 
   route {
     cidr_block = var.route_cidr_global
-    gateway_id = aws_nat_gateway.A4_ng.id
+    gateway_id = aws_nat_gateway.a4_ng_web.id
   }
 
   tags = {
-    "Name" = "${var.name}-ngrt"
+    "Name" = "${var.name}-ngrt-web"
   }
 }
 
 
 
-resource "aws_route_table_association" "A4_ngass" {
+resource "aws_route_table_association" "a4_ngass-web" {
   count          = length(var.pri_cidr_web)
-  subnet_id      = aws_subnet.A4_priweb[count.index].id
-  route_table_id = aws_route_table.A4_ngrt_web.id
+  subnet_id      = aws_subnet.a4_priweb[count.index].id
+  route_table_id = aws_route_table.a4_ngrt_web.id
 }
 
 
 # was private route table
-resource "aws_route_table" "A4_ngrt_was" {
-  vpc_id = aws_vpc.A4_vpc_was.id
+resource "aws_route_table" "a4_ngrt_was" {
+  vpc_id = aws_vpc.a4_vpc_was.id
   route {
     cidr_block = var.vpc_cidr_web
     vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
@@ -70,17 +76,17 @@ resource "aws_route_table" "A4_ngrt_was" {
 
   route {
     cidr_block = var.route_cidr_global
-    gateway_id = aws_nat_gateway.A4_ng_02.id
+    gateway_id = aws_nat_gateway.a4_ng_was.id
   }
 
   tags = {
-    "Name" = "${var.name}-ngrt"
+    "Name" = "${var.name}-ngrt-was"
   }
 }
 
-resource "aws_route_table_association" "A4_ngass_was" {
+resource "aws_route_table_association" "a4_ngass_was" {
   count          = length(var.pri_cidr_was)
-  subnet_id      = aws_subnet.A4_priwas[count.index].id
-  route_table_id = aws_route_table.A4_ngrt_was.id
+  subnet_id      = aws_subnet.a4_priwas[count.index].id
+  route_table_id = aws_route_table.a4_ngrt_was.id
 }
 

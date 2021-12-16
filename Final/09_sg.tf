@@ -1,6 +1,6 @@
 #Bastion Security-Group
 resource "aws_security_group" "bastion_sg" {
-  vpc_id = aws_vpc.A4_vpc_web.id
+  vpc_id = aws_vpc.a4_vpc_web.id
   name = "bastion security group"
   description = "SSH, HTTP, HTTPS"
   tags = { "Name" = "bastion-sg"}
@@ -8,7 +8,7 @@ resource "aws_security_group" "bastion_sg" {
 
 #Web-Server Security-Group
 resource "aws_security_group" "web_sg" {
-  vpc_id = aws_vpc.A4_vpc_web.id
+  vpc_id = aws_vpc.a4_vpc_web.id
   name = "Web-server security group"
   description = "SSH, HTTP, HTTPS, EFS-2049"
   tags = { "Name" = "web-sg"}
@@ -16,7 +16,7 @@ resource "aws_security_group" "web_sg" {
 
 #Was-Server Security-Group
 resource "aws_security_group" "was_sg" {
-  vpc_id = aws_vpc.A4_vpc_was.id
+  vpc_id = aws_vpc.a4_vpc_was.id
   name = "Was-server security group"
   description = "SSH, 8100"
   tags = { "Name" = "was-sg"}
@@ -24,7 +24,7 @@ resource "aws_security_group" "was_sg" {
 
 #Database Security-Group
 resource "aws_security_group" "db_sg" {
-  vpc_id = aws_vpc.A4_vpc_was.id
+  vpc_id = aws_vpc.a4_vpc_was.id
   name = "Database security group"
   description = "mysql"
   tags = { "Name" = "db-sg"}
@@ -32,7 +32,7 @@ resource "aws_security_group" "db_sg" {
 
 #ALB Security-Group
 resource "aws_security_group" "alb_sg" {
-  vpc_id = aws_vpc.A4_vpc_web.id
+  vpc_id = aws_vpc.a4_vpc_web.id
   name = "ALB security group"
   description = "HTTP, HTTPS"
   tags = { "Name" = "alb-sg"}
@@ -40,7 +40,7 @@ resource "aws_security_group" "alb_sg" {
 
 #EFS Security-Group
 resource "aws_security_group" "efs_sg" {
-  vpc_id = aws_vpc.A4_vpc_web.id
+  vpc_id = aws_vpc.a4_vpc_web.id
   name = "EFS security group"
   description = "EFS-2049"
   tags = { "Name" = "efs-sg"}
@@ -48,7 +48,7 @@ resource "aws_security_group" "efs_sg" {
 
 #Redis Security-Group
 resource "aws_security_group" "redis_sg" {
-  vpc_id = aws_vpc.A4_vpc_was.id
+  vpc_id = aws_vpc.a4_vpc_was.id
   name = "Redis security group"
   description = "redis-6379"
   tags = { "Name" = "redis-sg"}
@@ -275,50 +275,50 @@ resource "aws_security_group_rule" "egress_redis" {
 }
 
 #Golden-Image Security-Group-Rule for SSH
-resource "aws_security_group_rule" "A4_ssh_gi" {
+resource "aws_security_group_rule" "a4_ssh_gi" {
   type = var.rule_type[0]
   from_port = var.port_ssh
   to_port = var.port_ssh
   protocol = var.protocol
   cidr_blocks = [var.route_cidr_global]
-  security_group_id = aws_security_group.A4_gi_sg.id
+  security_group_id = aws_security_group.a4_gi_sg.id
 }
 
 # #Golden-Image Security-Group-Rule for HTTP
-resource "aws_security_group_rule" "A4_http_gi" {
+resource "aws_security_group_rule" "a4_http_gi" {
   type = var.rule_type[0]
   from_port = var.port_http
   to_port = var.port_http
   protocol = var.protocol
   cidr_blocks = [var.route_cidr_global]
-  security_group_id = aws_security_group.A4_gi_sg.id
+  security_group_id = aws_security_group.a4_gi_sg.id
 }
 
 #Golden-Image Security-Group-Rule for Tomcat
-resource "aws_security_group_rule" "A4_tomcat_gi" {
+resource "aws_security_group_rule" "a4_tomcat_gi" {
   type = var.rule_type[0]
   from_port = var.port_tomcat
   to_port = var.port_tomcat
   protocol = var.protocol
   cidr_blocks = [var.route_cidr_global]
-  security_group_id = aws_security_group.A4_gi_sg.id
+  security_group_id = aws_security_group.a4_gi_sg.id
 }
 
 #Golden-Image Security-Gruop-Rule egress
-resource "aws_security_group_rule" "A4_egress_gi" {
+resource "aws_security_group_rule" "a4_egress_gi" {
   type = var.rule_type[1]
   from_port = 0
   to_port = 0
   protocol = -1
   cidr_blocks = [var.route_cidr_global]
-  security_group_id = aws_security_group.A4_gi_sg.id
+  security_group_id = aws_security_group.a4_gi_sg.id
 }
 
 # 필요한 사람만 쓰세요
 # default ami용 이미지 파일
 # Golden-Image Security-Group
-resource "aws_security_group" "A4_gi_sg" {
-  vpc_id = aws_vpc.A4_vpc_web.id
+resource "aws_security_group" "a4_gi_sg" {
+  vpc_id = aws_vpc.a4_vpc_web.id
   name = "Golden-Image security group"
   description = "SSH, HTTP, 8100"
   tags = { "Name" = "gi-sg"}
