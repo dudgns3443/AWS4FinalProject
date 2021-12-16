@@ -28,6 +28,11 @@ resource "aws_autoscaling_group" "a4_was_auto" {
     health_check_type = "EC2"
     launch_configuration = aws_launch_configuration.a4_was_lc.name
     vpc_zone_identifier = [aws_subnet.a4_priwas[0].id, aws_subnet.a4_priwas[1].id]
+    tag {
+     key                 = "Name"
+     value               = "a4-web-asg"
+     propagate_at_launch = true
+  }
 }
 
 resource "aws_autoscaling_attachment" "a4_was_asatt" {
