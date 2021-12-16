@@ -4,3 +4,4 @@ terraform-provider-aws_v3.69.0_x5.exe
 terraform.tfstate
 terraform.tfstate.backup
 secret_key.tf
+00_ssh.tf
