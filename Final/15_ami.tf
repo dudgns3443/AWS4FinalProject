@@ -52,16 +52,6 @@ resource "aws_autoscaling_group" "a4_web_auto" {
     vpc_zone_identifier = [aws_subnet.a4_priweb[0].id, aws_subnet.a4_priweb[1].id]
 }
 
-
-resource "aws_autoscaling_group_tag" "a4_web_auto_tag" {
-  autoscaling_group_name = aws_autoscaling_group.a4_web_auto.name
-  tag {
-      key = "aws:autoscaling:groupName"
-      value = "web"
-      propagate_at_launch = true
-  }
-}
-
 resource "aws_autoscaling_attachment" "a4_web_asatt" {
     autoscaling_group_name = aws_autoscaling_group.a4_web_auto.id
     alb_target_group_arn = aws_lb_target_group.a4_http_albtg.arn
