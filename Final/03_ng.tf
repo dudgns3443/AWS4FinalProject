@@ -1,4 +1,4 @@
-# vpc1 natgateway용 EIP
+# VPC-Web natgateway용 EIP
 resource "aws_eip" "a4_eip_ng_web" {
   vpc = true
   tags = {
@@ -6,7 +6,7 @@ resource "aws_eip" "a4_eip_ng_web" {
   }
 }
 
-# vpc2 natgateway용 EIP
+# VPC-Was natgateway용 EIP
 resource "aws_eip" "a4_eip_ng_was" {
   vpc = true
   tags = {
@@ -14,7 +14,7 @@ resource "aws_eip" "a4_eip_ng_was" {
   }
 }
 
-# vpc1 natgateway
+# VPC-Web natgateway
 resource "aws_nat_gateway" "a4_ng_web" {
   allocation_id = aws_eip.a4_eip_ng_web.id
   subnet_id     = aws_subnet.a4_pub[0].id
@@ -26,7 +26,7 @@ resource "aws_nat_gateway" "a4_ng_web" {
   ]
 }
 
-# vpc2 natgateway
+# VPC-Was natgateway
 resource "aws_nat_gateway" "a4_ng_was" {
   allocation_id = aws_eip.a4_eip_ng_was.id
   subnet_id     = aws_subnet.a4_pubwas[0].id
@@ -38,7 +38,7 @@ resource "aws_nat_gateway" "a4_ng_was" {
   ]
 }
 
-# web private route table
+# VPC-web private route table
 resource "aws_route_table" "a4_ngrt_web" {
   vpc_id = aws_vpc.a4_vpc_web.id
   route {
@@ -66,7 +66,7 @@ resource "aws_route_table_association" "a4_ngass-web" {
 }
 
 
-# was private route table
+# VPC-Was private route table
 resource "aws_route_table" "a4_ngrt_was" {
   vpc_id = aws_vpc.a4_vpc_was.id
   route {

@@ -1,4 +1,4 @@
-# vpc1 IGW
+# VPC-Web IGW
 resource "aws_internet_gateway" "a4_ig_web" {
   vpc_id = aws_vpc.a4_vpc_web.id
 
@@ -6,7 +6,7 @@ resource "aws_internet_gateway" "a4_ig_web" {
     "Name" = "a4-ig-web"
   }
 }
-# vpc2 IGW
+# VPC-Was IGW
 resource "aws_internet_gateway" "a4_ig_was" {
   vpc_id = aws_vpc.a4_vpc_was.id
 

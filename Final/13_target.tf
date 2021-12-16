@@ -1,3 +1,4 @@
+#VPC-Web ALB
 resource "aws_lb" "a4_alb" {
   name = "${var.name}-alb"
   internal = false
@@ -9,7 +10,7 @@ resource "aws_lb" "a4_alb" {
   }
 }
 
-#### nlb
+#VPC-Was NLB
 resource "aws_lb" "a4_nlb" {
   name = "${var.name}-nlb"
   internal = true
@@ -20,6 +21,7 @@ resource "aws_lb" "a4_nlb" {
   }
 }
 
+#VPC-Web ALB Target Group
 resource "aws_lb_target_group" "a4_http_albtg" {
   name = "a4-http-albtg"
   port = var.port_http
@@ -37,15 +39,6 @@ resource "aws_lb_target_group" "a4_http_albtg" {
   }
 }
 
-#### nlb_tg 
-resource "aws_lb_target_group" "a4_tomcat_nlbtg" {
-  name = "a4-tomcat-nlbtg"
-  port = var.port_tomcat
-  protocol = var.b_protocol
-  vpc_id = aws_vpc.a4_vpc_was.id
-  target_type = var.target_type
-}
-
 resource "aws_lb_listener" "a4_http_alblis" {
   load_balancer_arn = aws_lb.a4_alb.arn
   port = var.port_http
@@ -57,7 +50,15 @@ resource "aws_lb_listener" "a4_http_alblis" {
   }
 }
 
-#### nlb_listener
+#VPC-Was NLB Target Group 
+resource "aws_lb_target_group" "a4_tomcat_nlbtg" {
+  name = "a4-tomcat-nlbtg"
+  port = var.port_tomcat
+  protocol = var.b_protocol
+  vpc_id = aws_vpc.a4_vpc_was.id
+  target_type = var.target_type
+}
+
 resource "aws_lb_listener" "a4_tomcat_nlblis" {
   load_balancer_arn = aws_lb.a4_nlb.arn
   port = var.port_tomcat
