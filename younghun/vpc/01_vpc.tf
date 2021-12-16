@@ -87,3 +87,7 @@ resource "aws_subnet" "yh_pridb" {
 # #   description = "description"
 # #   depends_on  = []
 # }
+
+output "vpc_id" {
+    value = aws_vpc.yhkim_vpc_web.id
+}
