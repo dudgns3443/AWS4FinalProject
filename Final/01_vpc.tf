@@ -36,6 +36,7 @@ resource "aws_subnet" "a4_pub" {
   count = length(var.pub_cidr)
   vpc_id            = aws_vpc.a4_vpc_web.id
   cidr_block        = var.pub_cidr[count.index]
+  map_public_ip_on_launch = true
   availability_zone = "${var.region}${var.az[count.index]}"
   tags = {
     "Name" = "${var.name}-pubweb-${var.az[count.index]}"
