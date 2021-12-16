@@ -29,3 +29,4 @@ resource "aws_subnet" "a4_priweb" {
   tags = {
     "Name" = "${var.name}-priweb-${var.az[count.index]}"
   }
+}
