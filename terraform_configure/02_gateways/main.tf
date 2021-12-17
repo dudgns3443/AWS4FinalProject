@@ -7,7 +7,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     encrypt        = true
-    key            = "network/terraform.tfstate"
+    key            = "gateways/terraform.tfstate"
 
     region         = "ap-northeast-2" 
 
@@ -18,7 +18,8 @@ terraform {
 }
 
 
-module "vpc" {
-  source = "./vpc_module"
+module "gateways" {
+  source = "../terraform_template/gateway_module"
 
 }
+

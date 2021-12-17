@@ -19,6 +19,6 @@ terraform {
 
 
 module "vpc" {
-  source = "./vpc_module"
+  source = "../terraform_template/vpc_module"
 
 }
