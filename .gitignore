@@ -6,3 +6,5 @@ terraform.tfstate.backup
 secret_key.tf
 00_ssh.tf
 .terraform.tfstate.lock.info
+
+terraform-provider-aws_v3.70.0_x5.exe
