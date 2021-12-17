@@ -23,7 +23,7 @@ resource "aws_instance" "bastion" {
   private_ip = var.bastion_pip
   #subnet_id = aws_subnet.a4_pub[0].id
   subnet_id = data.terraform_remote_state.network.outputs.a4_sub_pub_web[0].id
-  # user_data = file("./ssh.sh")
+  user_data = file("./bastion.sh")
   tags = {
     "Name" = "Bastion"
   }
