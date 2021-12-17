@@ -30,7 +30,3 @@ resource "aws_subnet" "a4_priweb" {
     "Name" = "${var.name}-priweb-${var.az[count.index]}"
   }
 }
-
-output "vpc1_id" {
-  value = aws_vpc.a4_vpc_web.id
-}

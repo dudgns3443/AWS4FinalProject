@@ -11,7 +11,7 @@ terraform {
 
     region         = "ap-northeast-2" 
 
-    bucket         = "yhkim-terraform-state"
+    bucket         = "a4-terraform-state"
   }
 
   required_version = ">= 0.12.0"

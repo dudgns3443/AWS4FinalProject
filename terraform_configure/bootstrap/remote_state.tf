@@ -1,5 +1,6 @@
 provider "aws" {
   region  = "ap-northeast-2"
+  profile = "bespin-aws4"
 }
 
 resource "aws_s3_bucket" "bucket_terraform_state" {
