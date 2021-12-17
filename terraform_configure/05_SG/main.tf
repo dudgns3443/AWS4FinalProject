@@ -10,7 +10,7 @@ terraform {
 
     region         = "ap-northeast-2" 
 
-    bucket         = "a4-terraform-state"\
+    bucket         = "a4-terraform-state"
 
     profile = "bespin-aws4"
   }

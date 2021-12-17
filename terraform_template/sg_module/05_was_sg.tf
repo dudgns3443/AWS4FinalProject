@@ -1,6 +1,6 @@
 #Was-Server Security-Group
-resource "aws_security_group" "was_sg" {
-  vpc_id = aws_vpc.a4_vpc_was.id
+resource "aws_security_group" "a4_was_sg" {
+  vpc_id = data.terraform_remote_state.network.a4_vpc_was_id
   name = "Was-server security group"
   description = "SSH, 8100"
   tags = { "Name" = "was-sg"}
@@ -13,7 +13,7 @@ resource "aws_security_group_rule" "ssh-was" {
   to_port = var.port_ssh
   protocol = var.protocol
   source_security_group_id = aws_security_group.bastion_sg.id
-  security_group_id = aws_security_group.was_sg.id
+  security_group_id = aws_security_group.a4_was_sg.id
 }
 
 #Was-Server Security-Group-Rule for tomcat
@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "tomcat_was1" {
   to_port = var.port_tomcat
   protocol = var.protocol
   cidr_blocks = [var.pri_cidr_was[0]]
-  security_group_id = aws_security_group.was_sg.id
+  security_group_id = aws_security_group.a4_was_sg.id
 }
 
 #Was-Server Security-Group-Rule for tomcat
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "tomcat_was2" {
   to_port = var.port_tomcat
   protocol = var.protocol
   cidr_blocks = [var.pri_cidr_was[1]]
-  security_group_id = aws_security_group.was_sg.id
+  security_group_id = aws_security_group.a4_was_sg.id
 }
 
 #Was-Server Security-Gruop-Rule egress
@@ -43,5 +43,5 @@ resource "aws_security_group_rule" "egress_was" {
   to_port = 0
   protocol = -1
   cidr_blocks = [var.route_cidr_global]
-  security_group_id = aws_security_group.was_sg.id
+  security_group_id = aws_security_group.a4_was_sg.id
 }
