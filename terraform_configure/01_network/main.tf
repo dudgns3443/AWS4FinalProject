@@ -1,7 +1,6 @@
 provider "aws" {
   region = "ap-northeast-2"
-  #access_key = var.access_key
-  #secret_key = var.secret_key
+  profile = "bespin-aws4"
 }
 
 terraform {
@@ -10,8 +9,8 @@ terraform {
     key            = "network/terraform.tfstate"
 
     region         = "ap-northeast-2" 
-
-    bucket         = "yhkim-terraform-state"
+    profile        = "bespin-aws4"
+    bucket         = "a4-terraform-state"
   }
 
   required_version = ">= 0.12.0"
@@ -19,7 +18,7 @@ terraform {
 
 
 module "vpc" {
-  source = "../../terraform_template/vpc_module"
+  source = "../../terraform_template/network"
 
 }
 

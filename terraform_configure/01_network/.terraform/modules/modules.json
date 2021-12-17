@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"vpc","Source":"../../terraform_template/vpc_module","Dir":"../../terraform_template/vpc_module"},{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"vpc","Source":"../../terraform_template/vpc_module","Dir":""},{"Key":"","Source":"","Dir":"."}]}
