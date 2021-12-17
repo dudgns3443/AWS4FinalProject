@@ -19,6 +19,6 @@ terraform {
   required_version = ">= 0.12.0"
 }
 
-module "a4_ec2_bastion" {
+module "ec2_bastion" {
   source = "../../terraform_template/ec2_bastion"
 }
