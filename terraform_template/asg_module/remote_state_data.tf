@@ -20,15 +20,16 @@ data "terraform_remote_state" "sg" {
   }
 }
 data "terraform_remote_state" "golden_image" {
+  
   backend = "s3"
 
   config = {
     bucket = "a4-terraform-state"
-    key    = "golden_image/terraform.tfstate"
+    key    = "golden_img/terraform.tfstate"
     region = "ap-northeast-2"
     profile = "bespin-aws4"
   }
-
+}
 data "terraform_remote_state" "alb" {
   backend = "s3"
 
@@ -38,7 +39,7 @@ data "terraform_remote_state" "alb" {
     region = "ap-northeast-2"
     profile = "bespin-aws4"
   }
-
+}
 data "terraform_remote_state" "nlb" {
   backend = "s3"
 
@@ -47,4 +48,5 @@ data "terraform_remote_state" "nlb" {
     key    = "nlb/terraform.tfstate"
     region = "ap-northeast-2"
     profile = "bespin-aws4"
-  } 
+  }
+} 

@@ -12,7 +12,7 @@ resource "aws_launch_configuration" "a4_web_lc" {
     name = "${var.name}-web-lc"
     image_id = aws_ami_from_instance.a4_web_ami.id
     instance_type = var.instance_type
-    security_groups = [data.terraform_remote_state.sg.outputs.web_sg_id.id]
+    security_groups = [data.terraform_remote_state.sg.outputs.web_sg_id]
     key_name = var.key
 }
 
@@ -36,5 +36,5 @@ resource "aws_autoscaling_group" "a4_web_auto" {
 
 resource "aws_autoscaling_attachment" "a4_web_asatt" {
     autoscaling_group_name = aws_autoscaling_group.a4_web_auto.id
-    alb_target_group_arn = data.terraform_remote_state.alb.outputs.a4_http_albtg_arn.arn
+    alb_target_group_arn = data.terraform_remote_state.alb.outputs.a4_http_albtg_arn
 }
