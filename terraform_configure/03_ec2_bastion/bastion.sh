@@ -1,14 +1,18 @@
 #!/bin/bash
-mkdir /app
-cd /app
-yum install -y gcc-c++ make 
 
-curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash - 
-yum install -y nodejs
+wget -P /home/ec2-user/ https://s4-stuff-bucket.s3.ap-northeast-2.amazonaws.com/a4_key.pem
 
-yum install git -y
-git clone https://github.com/dudgns3443/HealthCare-BackEnd.git
+amazon-linux-extras install -y ansible2
 
-cd HealthCare-BackEnd
-npm install package.json --save
-node app
+cd /home/ec2-user
+echo "AKIAUD6MY25DRH5U4WP6
+> P0OP1SPUwVLd6AZu3uvz/Ed/Ap+sftLPa/zqWkK/
+> ap-northeast-2
+> json
+> " > configure_info
+
+aws configure < configure_info
+echo '[web]' > inventory
+aws ec2 describe-instances --filters Name=tag-value,Values=a4-web-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> inventory
+echo '[was]' >> inventory
+aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> inventory
