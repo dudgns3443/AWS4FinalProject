@@ -5,3 +5,4 @@ terraform.tfstate
 terraform.tfstate.backup
 secret_key.tf
 00_ssh.tf
+.terraform.tfstate.lock.info

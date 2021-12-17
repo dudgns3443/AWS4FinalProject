@@ -1,9 +1,9 @@
 data "terraform_remote_state" "vpc" {
   backend = "s3"
 
-  config {
+  config = {
     bucket = "yhkim-terraform-state"
-    key    = "vpc/terraform.tfstate"
+    key    = "network/terraform.tfstate"
     region = "ap-northeast-2"
   }
 }

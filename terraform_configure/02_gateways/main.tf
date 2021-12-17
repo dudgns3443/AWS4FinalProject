@@ -19,7 +19,10 @@ terraform {
 
 
 module "gateways" {
-  source = "../terraform_template/gateway_module"
+  source = "../../terraform_template/gateway_module"
 
 }
 
+output "vpc1_id_2" {
+  value = module.gateways.vpc1_id
+}

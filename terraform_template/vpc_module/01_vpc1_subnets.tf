@@ -31,6 +31,6 @@ resource "aws_subnet" "a4_priweb" {
   }
 }
 
-output 'subnet_id' {
-  value = aws_subnet.a4_priweb.id
+output "vpc1_id" {
+  value = aws_vpc.a4_vpc_web.id
 }
