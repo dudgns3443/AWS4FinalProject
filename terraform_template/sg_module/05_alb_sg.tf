@@ -1,6 +1,6 @@
 #ALB Security-Group
 resource "aws_security_group" "a4_alb_sg" {
-  vpc_id = data.terraform_remote_state.network.a4_vpc_web_id
+  vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_web_id
   name = "ALB security group"
   description = "HTTP, HTTPS"
   tags = { "Name" = "alb-sg"}

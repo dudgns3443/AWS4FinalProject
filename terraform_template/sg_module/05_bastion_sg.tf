@@ -1,6 +1,6 @@
 #Bastion Security-Group
 resource "aws_security_group" "a4_bastion_sg" {
-  vpc_id = data.terraform_remote_state.network.a4_vpc_web_id
+  vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_web_id
   name = "bastion security group"
   description = "SSH, HTTP, HTTPS"
   tags = { "Name" = "bastion-sg"}
