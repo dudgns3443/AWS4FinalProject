@@ -1,7 +1,6 @@
 provider "aws" {
   region = "ap-northeast-2"
-  #access_key = var.access_key
-  #secret_key = var.secret_key
+  profile = "bespin-aws4"
 }
 
 terraform {
@@ -10,7 +9,7 @@ terraform {
     key            = "gateways/terraform.tfstate"
 
     region         = "ap-northeast-2" 
-
+    profile = "bespin-aws4"
     bucket         = "a4-terraform-state"
   }
 
@@ -19,10 +18,10 @@ terraform {
 
 
 module "gateways" {
-  source = "../../terraform_template/gateway_module"
+  source = "../../terraform_template/참조용module_template"
 
 }
 
-output "vpc1_id_2" {
+output "a4_vpc_web_id" {
   value = module.gateways.vpc1_id
 }

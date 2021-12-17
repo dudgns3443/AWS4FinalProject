@@ -1,6 +1,6 @@
 # Golden-Image Security-Group
 resource "aws_security_group" "a4_gi_sg" {
-  vpc_id = aws_vpc.a4_vpc_web.id
+  vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_web_id
   name = "Golden-Image security group"
   description = "SSH, HTTP, 8100"
   tags = { "Name" = "gi-sg"}

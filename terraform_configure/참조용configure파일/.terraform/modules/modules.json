@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"gateways","Source":"../../terraform_template/gateway_module","Dir":"../../terraform_template/gateway_module"},{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"gateways","Source":"../../terraform_template/참조용module_template","Dir":"../../terraform_template/참조용module_template"},{"Key":"","Source":"","Dir":"."}]}
