@@ -30,3 +30,7 @@ resource "aws_subnet" "a4_priweb" {
     "Name" = "${var.name}-priweb-${var.az[count.index]}"
   }
 }
+
+output 'subnet_id' {
+  value = aws_subnet.a4_priweb.id
+}
