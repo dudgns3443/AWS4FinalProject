@@ -11,7 +11,7 @@ terraform {
     region         = "ap-northeast-2" 
 
     bucket         = "a4-terraform-state"
-
+    dynamodb_table = "a4-terraform-locks"
     profile = "bespin-aws4"
   }
 
