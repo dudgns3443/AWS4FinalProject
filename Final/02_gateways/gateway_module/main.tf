@@ -7,3 +7,5 @@ data "terraform_remote_state" "vpc" {
     region = "ap-northeast-2"
   }
 }
+
+data.terraform_remote_state.vpc.outputs.subnet_id
