@@ -17,11 +17,7 @@ terraform {
 }
 
 
-module "vpc" {
+module "network" {
   source = "../../terraform_template/network"
 
-}
-
-output "vpc1_id" {
-  value = module.vpc.vpc1_id
 }
