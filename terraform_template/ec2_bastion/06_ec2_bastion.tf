@@ -25,7 +25,7 @@ resource "aws_instance" "bastion" {
   subnet_id = data.terraform_remote_state.network.outputs.a4_sub_pub_web[0].id
   user_data = file("./bastion.sh")
   tags = {
-    "Name" = "Bastion"
+    "Name" = "bastion"
   }
 }
 
