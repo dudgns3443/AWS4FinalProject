@@ -7,6 +7,13 @@ resource "aws_lb" "a4_alb" {
   security_groups = [data.terraform_remote_state.sg.outputs.alb_sg_id]
   subnets = [data.terraform_remote_state.network.outputs.a4_sub_pub_web[0].id,data.terraform_remote_state.network.outputs.a4_sub_pub_web[1].id]
   #subnets = [aws_subnet.a4_pub[0].id,aws_subnet.a4_pub[1].id]
+  
+  access_logs {
+    bucket  = "bucket-log-kth"
+    prefix  = "alb"
+    enabled = true
+  }
+  
   tags = {
     "Name" = "${var.name}-alb"
   }
@@ -38,5 +45,16 @@ resource "aws_lb_listener" "a4_http_alblis" {
   default_action {
     type = var.lis_default_action
     target_group_arn = aws_lb_target_group.a4_http_albtg.arn
+  }
+}
+
+# s3 access point made by kth
+resource "aws_s3_access_point" "s3_access_point" {
+  bucket = "bucket-log-kth"
+  name   = "s3-access-point"
+
+  # VPC must be specified for S3 on Outposts
+  vpc_configuration {
+    vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_web_id
   }
 }
