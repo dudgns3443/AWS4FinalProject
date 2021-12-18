@@ -4,6 +4,13 @@ resource "aws_lb" "a4_nlb" {
   internal = true
   load_balancer_type = var.lb_type[1]
   subnets = [data.terraform_remote_state.network.outputs.a4_sub_pri_was[0].id,data.terraform_remote_state.network.outputs.a4_sub_pri_was[1].id]
+
+  #   access_logs {
+  #   bucket  = "bucket-log-kth"
+  #   prefix  = "nlb"
+  #   enabled = true
+  # }
+
   tags = {
     "Name" = "${var.name}-nlb"
   }
@@ -29,3 +36,15 @@ resource "aws_lb_listener" "a4_tomcat_nlblis" {
     target_group_arn = aws_lb_target_group.a4_tomcat_nlbtg.arn
   }
 }
+
+# s3 nlb access point => 권한 문제 오류가 남
+# # s3 access point
+# resource "aws_s3_access_point" "s3_access_point_nlb" {
+#   bucket = "bucket-log-kth"
+#   name   = "s3-access-point-nlb"
+
+#   # VPC must be specified for S3 on Outposts
+#   vpc_configuration {
+#     vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_was_id
+#   }
+# }

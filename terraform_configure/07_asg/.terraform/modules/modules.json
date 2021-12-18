@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"asg","Source":"../../terraform_template/asg_module","Dir":"../../terraform_template/asg_module"},{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"asg","Source":"../../terraform_template/asg_module","Dir":"../../terraform_template/asg_module"}]}
