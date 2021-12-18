@@ -19,6 +19,7 @@ terraform {
   required_version = ">= 0.12.0"
 }
 
+
 module "ec2_bastion" {
   source = "../../terraform_template/ec2_bastion"
 }
