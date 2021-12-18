@@ -14,6 +14,7 @@ resource "aws_launch_configuration" "a4_web_lc" {
     instance_type = var.instance_type
     security_groups = [data.terraform_remote_state.sg.outputs.web_sg_id]
     key_name = var.key
+    user_data = file("ssh.sh")
 }
 
 #VPC-Web Auto Scaling
