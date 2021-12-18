@@ -10,9 +10,9 @@ terraform {
     encrypt = true
     key     = "ebs_efs/terraform.tfstate"
 
-    region  = "ap-northeast-2"
-    profile = "bespin-aws4"
-    bucket  = "a4-terraform-state"
+    region         = "ap-northeast-2"
+    profile        = "bespin-aws4"
+    bucket         = "a4-terraform-state"
     dynamodb_table = "a4-terraform-locks"
   }
 

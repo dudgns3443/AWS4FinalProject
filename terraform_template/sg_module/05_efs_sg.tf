@@ -12,7 +12,7 @@ resource "aws_security_group_rule" "efs_rule" {
   from_port = var.port_efs
   to_port = var.port_efs
   protocol = var.protocol
-  source_security_group_id = aws_security_group.a4_web_sg.id
+  source_security_group_id = aws_security_group.a4_bastion_sg.id
   security_group_id = aws_security_group.a4_efs_sg.id
 }
 
