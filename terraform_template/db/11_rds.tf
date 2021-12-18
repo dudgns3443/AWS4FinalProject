@@ -29,3 +29,10 @@ resource "aws_db_subnet_group" "a4_dbsg" {
         "Name" = "a4-dbsg"
     }
 }
+
+# 스냅샷
+resource "aws_db_snapshot" "a4_db_snapshot" {
+    db_instance_identifier = aws_db_instance.a4_final_db.id
+    db_snapshot_identifier = "aws4dbsnapshot"
+  
+}
