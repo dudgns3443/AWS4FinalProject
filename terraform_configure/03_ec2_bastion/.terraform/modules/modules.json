@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"a4_ec2_bastion","Source":"../../terraform_template/ec2_bastion","Dir":"../../terraform_template/ec2_bastion"},{"Key":"ec2_bastion","Source":"../../terraform_template/ec2_bastion","Dir":"../../terraform_template/ec2_bastion"}]}
+{"Modules":[{"Key":"a4_ec2_bastion","Source":"../../terraform_template/ec2_bastion","Dir":"../../terraform_template/ec2_bastion"},{"Key":"ec2_bastion","Source":"../../terraform_template/ec2_bastion","Dir":"../../terraform_template/ec2_bastion"},{"Key":"","Source":"","Dir":"."}]}
