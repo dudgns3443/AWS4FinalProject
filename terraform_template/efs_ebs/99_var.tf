@@ -118,6 +118,7 @@ variable "port_redis" {
 
 variable "port_tomcat" {
     type = number
+    default = 8100
 
 }
 
