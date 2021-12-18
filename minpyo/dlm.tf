@@ -1,7 +1,7 @@
 provider "aws" {
-    region = "ap-northeast-2"
-    profile = "bespin-aws4"
-  
+  region = "ap-northeast-2"
+  access_key = "AKIAUD6MY25DV6O33747"
+  secret_key = "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"
 }
 
 # iam 역할 부여
@@ -10,7 +10,7 @@ resource "aws_iam_role" "a4_dlm_lifecycle_role" {
   name = "a4-dlm"
 
   assume_role_policy = jsonencode(
-{
+ {
     Version: "2012-10-17",
     Statement: [
         {
@@ -54,8 +54,8 @@ resource "aws_iam_role" "a4_dlm_lifecycle_role" {
             Resource: "arn:aws:events:*:*:rule/AwsDataLifecycleRule.managed-cwe.*"
         },
     ]
-}
-  )
+  }
+)
 }
 /*
 resource "aws_dlm_lifecycle_policy" "a4_dlm_lifecycle_policy" {
