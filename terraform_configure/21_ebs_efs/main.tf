@@ -8,7 +8,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     encrypt = true
-    key     = "ec2_bastion/terraform.tfstate"
+    key     = "ebs_efs/terraform.tfstate"
 
     region  = "ap-northeast-2"
     profile = "bespin-aws4"
@@ -19,6 +19,6 @@ terraform {
   required_version = ">= 0.12.0"
 }
 
-module "ef_ebs" {
+module "efs_ebs" {
   source = "../../terraform_template/efs_ebs"
 }
