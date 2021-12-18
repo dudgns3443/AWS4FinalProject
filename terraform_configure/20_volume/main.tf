@@ -8,7 +8,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     encrypt = true
-    key     = "ec2_bastion/terraform.tfstate"
+    key     = "volume/terraform.tfstate"
 
     region  = "ap-northeast-2"
     profile = "bespin-aws4"
@@ -19,6 +19,6 @@ terraform {
   required_version = ">= 0.12.0"
 }
 
-module "ec2_bastion" {
-  source = "../../terraform_template/ec2_bastion"
+module "volume" {
+  source = "../../terraform_template/volume"
 }

@@ -7,3 +7,5 @@ sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_
 
 sed -i 's/# %wheel/%wheel/g' /etc/sudoers
 echo "work" | passwd --stdin ec2-user
+
+systemctl restart sshd
