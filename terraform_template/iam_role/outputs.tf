@@ -1,3 +1,3 @@
 output "describe_role_id" {
-    value = ec2_elb_describe_role.id
+    value = aws_iam_role.ec2_elb_describe_role.id
 }
