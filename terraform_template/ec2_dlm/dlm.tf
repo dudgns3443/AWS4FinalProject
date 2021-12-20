@@ -1,8 +1,3 @@
-provider "aws" {
-  region  = "ap-northeast-2"
-  profile = "bespin-aws4"
-}
-
 resource "aws_iam_role" "a4_dlm_lifecycle_role" {
   name = "a4-dlm-lifecycle-role"
 
