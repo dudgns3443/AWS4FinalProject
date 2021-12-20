@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ec2_elb_describe_role" {
-  name = "a4-dlm-lifecycle-role"
+  name = "ec2_elb_describe_role"
 
   assume_role_policy = <<EOF
 {
@@ -19,7 +19,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "describe_policy" {
-    name = "a4-dlm-lc-pol"
+    name = "ec2_elb_describe_role"
     role = aws_iam_role.ec2_elb_describe_role.id
 
     policy = <<EOF
