@@ -1,15 +1,14 @@
-/*
-resource "aws_iam_role" "a4_web_role" {
-  name = "aws4-web-role"
+resource "aws_iam_role" "web_role" {
+  name = "web-role"
 
   assume_role_policy = <<EOF
 {
-  "Version": "2020-12-20",
+  "Version": "2012-10-17",
   "Statement": [
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "ec2"
+        "Service": "ec2.amazonaws.com"
       },
       "Effect": "Allow",
       "Sid": ""
@@ -19,9 +18,9 @@ resource "aws_iam_role" "a4_web_role" {
 EOF
 }
 
-resource "aws_iam_role_policy" "a4_web_role_pol" {
-    name = "aws4-web-policy"
-    role = aws_iam_role.a4_web_role.id
+resource "aws_iam_role_policy" "web_policy" {
+    name = "web-policy"
+    role = aws_iam_role.web_role.id
 
     policy = <<EOF
 {
@@ -30,20 +29,21 @@ resource "aws_iam_role_policy" "a4_web_role_pol" {
       {
          "Effect": "Allow",
          "Action": [
-            "s3:PutObject",
-            "cloudwatch:CloudWatchAgentServerPolicy",
+            "ec2:DescribeInstances",
+            "elasticloadbalancing:DescribeLoadBalancers"
          ],
-         "Resource": "arn:aws:s3:::bucket-log-kth/*"
+         "Resource": "*"
       },
       {
          "Effect": "Allow",
-         "Action": [
-            "ec2:CreateTags"
-         ],
-         "Resource": "arn:aws:ec2:*::snapshot/*"
-  }
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-log-kth/*"
+      }
    ]
-    }
+}
   EOF
 }
-*/
+resource "aws_iam_instance_profile" "web_profile" {
+  name = "web_profile"
+  role = aws_iam_role.web_role.name
+}
