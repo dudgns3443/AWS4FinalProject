@@ -24,6 +24,7 @@ become_method = sudo
 become_user = root
 become_ask_pass = false" > ansible.cfg
 
+NLB_DNS=`aws elbv2 describe-load-balancers --names "a4-nlb" --query "LoadBalancers[*].DNSName[]" --output text`
 
 cat > nginx.conf << EOF
 user nginx;
@@ -76,8 +77,8 @@ http {
         location = /50x.html {
         }
 
-        location / { 
-            proxy_pass http://a4-nlb-a393c8dc33964660.elb.ap-northeast-2.amazonaws.com:8080; 
+        location /nlb { 
+            proxy_pass http://NLB_DNS:8080; 
             proxy_set_header X-Real-IP $remote_addr; 
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
             proxy_set_header Hsot $http_host; 

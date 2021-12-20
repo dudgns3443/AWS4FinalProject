@@ -1,8 +1,4 @@
 #!/bin/bash
-useradd -aG wheel ec2-user
-
-
-systemctl restart sshd
 
 mkdir /app
 
