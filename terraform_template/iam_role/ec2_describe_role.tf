@@ -33,7 +33,7 @@ resource "aws_iam_role_policy" "describe_policy" {
             "elb:DescribeLoadBalancers"
          ],
          "Resource": "*"
-      },
+      }
    ]
     }
   EOF

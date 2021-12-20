@@ -24,8 +24,6 @@ become_method = sudo
 become_user = root
 become_ask_pass = false" > ansible.cfg
 
-NLB_DNS=`aws elbv2 describe-load-balancers --names "a4-nlb" --query "LoadBalancers[*].DNSName[]" --output text`
-
 cat > nginx.conf << EOF
 user nginx;
 worker_processes auto;
