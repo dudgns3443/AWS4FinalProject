@@ -6,7 +6,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     encrypt        = true
-    key            = "asg/terraform.tfstate"
+    key            = "asg_web/terraform.tfstate"
 
     region         = "ap-northeast-2" 
     profile        = "bespin-aws4"
@@ -18,7 +18,7 @@ terraform {
 }
 
 
-module "asg" {
-  source = "../../terraform_template/asg_module"
+module "web_asg" {
+  source = "../../terraform_template/web_asg_module"
   
 }

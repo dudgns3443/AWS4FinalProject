@@ -86,12 +86,18 @@ http {
         location = /50x.html {
         }
 
+        # location /nlb { 
+        #     proxy_pass http://NLB_DNS:8080; 
+        #     proxy_set_header X-Real-IP $remote_addr; 
+        #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+        #     proxy_set_header Hsot $http_host; 
+        # }
         location /nlb { 
-            proxy_pass http://NLB_DNS:8080; 
+            proxy_pass http://a4-nlb-58b283bb7dbfc3e8.elb.ap-northeast-2.amazonaws.com:8100; 
             proxy_set_header X-Real-IP $remote_addr; 
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
             proxy_set_header Hsot $http_host; 
-        }
+        }        
     }
 
 # Settings for a TLS enabled server.
