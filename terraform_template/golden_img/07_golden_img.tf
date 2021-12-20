@@ -23,6 +23,7 @@ resource "aws_instance" "a4_web_golden_image" {
   #subnet_id = aws_subnet.a4_pub[1].id
   subnet_id = data.terraform_remote_state.network.outputs.a4_sub_pub_web[1].id
   user_data = file("./web.sh")
+  iam_instance_profile = data.terraform_remote_state.iam.outputs.web_describe_profile
   tags = {
     "Name" = "Web-golden-image"
   }
