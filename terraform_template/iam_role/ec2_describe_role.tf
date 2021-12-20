@@ -30,7 +30,7 @@ resource "aws_iam_role_policy" "describe_policy" {
          "Effect": "Allow",
          "Action": [
             "ec2:DescribeInstances",
-            "elb:DescribeLoadBalancers"
+            "elasticloadbalancing:DescribeLoadBalancers"
          ],
          "Resource": "*"
       }
