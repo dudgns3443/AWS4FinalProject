@@ -1,3 +1,3 @@
-output "describe_role_id" {
-  value = module.iam.describe_role_id
+output "describe_profile" {
+  value = module.iam.describe_profile
 }

@@ -38,3 +38,7 @@ resource "aws_iam_role_policy" "describe_policy" {
     }
   EOF
 }
+resource "aws_iam_instance_profile" "bastion_profile" {
+  name = "bastion_profile"
+  role = aws_iam_role.ec2_elb_describe_role.name
+}

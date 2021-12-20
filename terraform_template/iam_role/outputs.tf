@@ -1,3 +1,3 @@
-output "describe_role_id" {
-    value = aws_iam_role.ec2_elb_describe_role.id
+output "describe_profile" {
+    value = aws_iam_instance_profile.bastion_profile.name
 }

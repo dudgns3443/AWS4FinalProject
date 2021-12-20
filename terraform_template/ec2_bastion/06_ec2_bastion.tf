@@ -24,7 +24,7 @@ resource "aws_instance" "bastion" {
   #subnet_id = aws_subnet.a4_pub[0].id
   subnet_id = data.terraform_remote_state.network.outputs.a4_sub_pub_web[0].id
   user_data = file("./bastion.sh")
-  iam_instance_profile = data.terraform_remote_state.iam.outputs.describe_role_id
+  iam_instance_profile = data.terraform_remote_state.iam.outputs.describe_profile
   tags = {
     "Name" = "bastion"
   }
