@@ -24,11 +24,10 @@ module "backup" {
   purpose         = "dlm"
   role            = "role"
   resource_type   = "INSTANCE"
-  interval        = 24
+  interval        = 1
   interval_unit   = "HOURS"
   start_time      = "09:00"
   retain_number   = 3
   target_tag_Name = "bastion"
 
 }
-

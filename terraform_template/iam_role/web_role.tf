@@ -1,5 +1,6 @@
+/*
 resource "aws_iam_role" "a4_web_role" {
-  name = "${var.team}-web-role"
+  name = "aws4-web-role"
 
   assume_role_policy = <<EOF
 {
@@ -19,7 +20,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "a4_web_role_pol" {
-    name = "${var.team}-web-policy"
+    name = "aws4-web-policy"
     role = aws_iam_role.a4_web_role.id
 
     policy = <<EOF
@@ -45,4 +46,4 @@ resource "aws_iam_role_policy" "a4_web_role_pol" {
     }
   EOF
 }
-
+*/
