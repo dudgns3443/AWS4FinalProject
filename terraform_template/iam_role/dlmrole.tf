@@ -1,5 +1,6 @@
+
 resource "aws_iam_role" "a4_dlm_lifecycle_role" {
-  name = "${var.team}-${var.purpose}-role"
+  name = "${local.team}-${local.purpose}-role"
 
   assume_role_policy = <<EOF
 {
@@ -19,7 +20,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "a4_dlm_role_pol" {
-    name = "${var.team}-${var.purpose}-policy"
+    name = "${local.team}-${local.purpose}-policy"
     role = aws_iam_role.a4_dlm_lifecycle_role.id
 
     policy = <<EOF

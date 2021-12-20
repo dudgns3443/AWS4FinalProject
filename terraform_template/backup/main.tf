@@ -2,7 +2,7 @@
 
 resource "aws_dlm_lifecycle_policy" "a4_dlm_lfc_pol" {
     description = "Team A4 DLM lifecycle policy"
-    execution_role_arn = aws_iam_role.a4_dlm_lifecycle_role.arn
+    execution_role_arn = data.terraform_remote_state.iam.outputs.dlm_iam_role
     state = "ENABLED"
 
     policy_details {
