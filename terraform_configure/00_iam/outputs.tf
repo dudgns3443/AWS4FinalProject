@@ -3,6 +3,22 @@ output "describe_profile" {
 }
 
 output "dlm_iam_role" {
-    value = module.iam.dlm_iam_role
-    
+    value = module.iam.dlm_iam_role 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+output "cloudwatch_profile" {
+  value = module.iam.cloudwatch_profile
+}

@@ -5,3 +5,18 @@ output "describe_profile" {
 output "dlm_iam_role" {
     value = aws_iam_role.a4_dlm_lifecycle_role.arn
 }
+
+
+
+
+
+
+
+
+
+
+
+
+output "cloudwatch_profile" {
+    value = aws_iam_instance_profile.cw_role_profile.name
+}

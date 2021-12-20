@@ -1,14 +1,14 @@
-resource "aws_iam_role" "a4_was_role" {
-  name = "${var.team}-was-role"
+resource "aws_iam_role" "a4_cw_role" {
+  name = "a4-cw-role"
 
   assume_role_policy = <<EOF
 {
-  "Version": "2012-12-20",
+  "Version": "2012-10-17",
   "Statement": [
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "ec2.amazon.com"
+        "Service": "ec2.amazonaws.com"
       },
       "Effect": "Allow",
       "Sid": ""
@@ -18,9 +18,9 @@ resource "aws_iam_role" "a4_was_role" {
 EOF
 }
 
-resource "aws_iam_role_policy" "a4_was_role_pol" {
-    name = "${var.team}-was-policy"
-    role = aws_iam_role.a4_was_role.id
+resource "aws_iam_role_policy" "a4_cw_role_pol" {
+    name = "cw-policy"
+    role = aws_iam_role.a4_cw_role.id
     policy = <<EOF
 {
     "Version": "2012-10-17",
@@ -51,7 +51,7 @@ resource "aws_iam_role_policy" "a4_was_role_pol" {
 EOF
 }
 
-resource "aws_iam_instance_profile" "was_role_profile" {
-  name = "role_profile"
-  role = aws_iam_role.a4_was_role.name
+resource "aws_iam_instance_profile" "cw_role_profile" {
+  name = "cw_role_profile"
+  role = aws_iam_role.a4_cw_role.name
 }
