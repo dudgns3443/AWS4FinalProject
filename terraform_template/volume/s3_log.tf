@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
   "Statement": [
     {
       "Effect": "Allow",
-      "Principal": {
+      "Principal":{
         "AWS": "arn:aws:iam::600734575887:root"
       },
       "Action": "s3:PutObject",
