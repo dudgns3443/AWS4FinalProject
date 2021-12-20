@@ -5,16 +5,11 @@ wget -P /home/ec2-user/ https://s4-stuff-bucket.s3.ap-northeast-2.amazonaws.com/
 amazon-linux-extras install -y ansible2
 
 cd /home/ec2-user
-echo "AKIAUD6MY25DRH5U4WP6
-P0OP1SPUwVLd6AZu3uvz/Ed/Ap+sftLPa/zqWkK/
-ap-northeast-2
-json
-" > configure_info
 
-aws configure < configure_info
 echo '[web]' > inventory
 aws ec2 describe-instances --filters Name=tag-value,Values=a4-web-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> inventory
 echo '[was]' >> inventory
+
 aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> inventory
 
 aws elbv2 describe-load-balancers --names "a4-nlb" --query "LoadBalancers[*].DNSName[]" --output text > nlb_dns.txt
@@ -90,32 +85,8 @@ http {
 
     }
 
-# Settings for a TLS enabled server.
-#
-#    server {
-#        listen       443 ssl http2;
-#        listen       [::]:443 ssl http2;
-#        server_name  _;
-#        root         /usr/share/nginx/html;
-#
-#        ssl_certificate "/etc/pki/nginx/server.crt";
-#        ssl_certificate_key "/etc/pki/nginx/private/server.key";
-#        ssl_session_cache shared:SSL:1m;
-#        ssl_session_timeout  10m;
-#        ssl_ciphers PROFILE=SYSTEM;
-#        ssl_prefer_server_ciphers on;
-#
-#        # Load configuration files for the default server block.
-#        include /etc/nginx/default.d/*.conf;
-#
-#        error_page 404 /404.html;
-#            location = /40x.html {
-#        }
-#
-#        error_page 500 502 503 504 /50x.html;
-#            location = /50x.html {
-#        }
-#    }
-
 }
 EOF
+
+aws ec2 describe-instances --filters Name=tag-value,Values=a4-web-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> /etc/hosts
+aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> /etc/hosts
