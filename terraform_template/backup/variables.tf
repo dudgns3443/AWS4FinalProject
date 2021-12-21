@@ -43,3 +43,7 @@ variable "target_tag_Name" {
   type        = string
   description = "default -> bastion"
 }
+variable "remote_bucket_name" {
+  type        = string
+  default     = null
+}

@@ -265,3 +265,8 @@ variable "alb_port" {
     type = list
     default = [80,443]
 }
+
+variable "remote_bucket_name" {
+  type        = string
+  default     = null
+}

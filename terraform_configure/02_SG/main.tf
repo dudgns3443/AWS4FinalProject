@@ -10,7 +10,7 @@ terraform {
 
     region         = "ap-northeast-2" 
 
-    bucket         = "a4-terraform-state"
+    bucket         = var.remote_bucket_name
     dynamodb_table = "a4-terraform-locks"
     profile = "bespin-aws4"
   }
@@ -20,4 +20,5 @@ terraform {
 
 module "sg" {
     source = "../../terraform_template/sg_module"
+    remote_bucket_name = var.remote_bucket_name
 }

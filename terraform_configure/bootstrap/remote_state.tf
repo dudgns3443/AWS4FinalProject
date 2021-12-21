@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "bucket_terraform_state" {
-  bucket = "a4-terraform-state"
+  bucket = "aws4-terraform-state"
   acl    = "private"
 
 }

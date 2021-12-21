@@ -8,3 +8,7 @@ data "aws_iam_policy_document" "dlm_assume_role_pol" {
       }
     }
 }
+variable "remote_bucket_name" {
+  type        = string
+  default     = null
+}

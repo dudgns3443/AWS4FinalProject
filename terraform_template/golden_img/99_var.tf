@@ -260,3 +260,7 @@ variable "db_parameter_group_name" {
     type = string
     default = "default.mysql8.0"
 }
+variable "remote_bucket_name" {
+  type        = string
+  default     = null
+}

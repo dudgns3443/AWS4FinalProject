@@ -12,7 +12,7 @@ terraform {
 
     region  = "ap-northeast-2"
     profile = "bespin-aws4"
-    bucket  = "a4-terraform-state"
+    bucket  = var.remote_bucket_name
     dynamodb_table = "a4-terraform-locks"
   }
 
@@ -21,4 +21,5 @@ terraform {
 
 module "volume" {
   source = "../../terraform_template/volume"
+  remote_bucket_name = var.remote_bucket_name
 }
