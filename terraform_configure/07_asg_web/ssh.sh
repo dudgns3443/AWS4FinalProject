@@ -11,5 +11,3 @@ echo "work" | passwd --stdin ec2-user
 systemctl restart sshd
 
 NLB_DNS=`aws elbv2 describe-load-balancers --names "a4-nlb" --query "LoadBalancers[*].DNSName[]" --output text --region=ap-northeast-2`
-
-

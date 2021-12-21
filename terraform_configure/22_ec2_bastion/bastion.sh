@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget -P /home/ec2-user/ https://s4-stuff-bucket.s3.ap-northeast-2.amazonaws.com/a4_key.pem
+wget -P /home/ec2-user/ https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/a4_key.pem
 
 amazon-linux-extras install -y ansible2
 
@@ -86,14 +86,14 @@ http {
         location = /50x.html {
         }
 
-        # location /nlb { 
+        # location /nlb/ { 
         #     proxy_pass http://NLB_DNS:8080; 
         #     proxy_set_header X-Real-IP $remote_addr; 
         #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
         #     proxy_set_header Hsot $http_host; 
         # }
-        location /nlb { 
-            proxy_pass http://a4-nlb-58b283bb7dbfc3e8.elb.ap-northeast-2.amazonaws.com:8100; 
+        location /nlb/ { 
+            proxy_pass http://a4-nlb-159008c51cde6d9f.elb.ap-northeast-2.amazonaws.com:8100/; 
             proxy_set_header X-Real-IP $remote_addr; 
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
             proxy_set_header Hsot $http_host; 
@@ -130,8 +130,8 @@ http {
 }
 EOF
 
-aws ec2 describe-instances --filters Name=tag-value,Values=a4-web-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> /etc/hosts
-aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text >> /etc/hosts
+aws ec2 describe-instances --filters Name=tag-value,Values=a4-web-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text --region=ap-northeast-2  >> /etc/hosts
+aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text --region=ap-northeast-2  >> /etc/hosts
 
 cat > copy_conf.yaml << EOF
 - name: Copy nginx configuration
@@ -149,5 +149,3 @@ cat > copy_conf.yaml << EOF
       state: restarted
       enabled: yes
 EOF
-
-ansible-playbook copy_conf.yaml
