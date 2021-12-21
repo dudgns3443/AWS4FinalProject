@@ -10,7 +10,7 @@ terraform {
 
     region = "ap-northeast-2"
 
-    bucket         = var.remote_bucket_name
+    bucket         = "aws4-terraform-state"
     dynamodb_table = "a4-terraform-locks"
     profile        = "bespin-aws4"
   }
@@ -29,5 +29,5 @@ module "backup" {
   start_time      = "09:00"
   retain_number   = 3
   target_tag_Name = "bastion"
-  remote_bucket_name = var.remote_bucket_name
+  remote_bucket_name = "aws4-terraform-state"
 }

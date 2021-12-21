@@ -10,7 +10,7 @@ terraform {
 
     region         = "ap-northeast-2" 
     profile        = "bespin-aws4"
-    bucket         = var.remote_bucket_name
+    bucket         = "aws4-terraform-state"
     dynamodb_table = "a4-terraform-locks"
   }
 
@@ -20,5 +20,10 @@ terraform {
 
 module "network" {
   source = "../../terraform_template/network"
-  remote_bucket_name = var.remote_bucket_name
+  remote_bucket_name = "aws4-terraform-state"
+}
+
+variable "remote_bucket_name" {
+  type        = string
+  default     = "aws4-terraform-state"
 }

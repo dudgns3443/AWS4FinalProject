@@ -10,7 +10,7 @@ terraform {
 
     region         = "ap-northeast-2" 
     profile        = "bespin-aws4"
-    bucket         = var.remote_bucket_name
+    bucket         = "aws4-terraform-state"
     dynamodb_table = "a4-terraform-locks"
   }
 
@@ -19,5 +19,5 @@ terraform {
 
 module "nlb" {
   source = "../../terraform_template/nlb_module"
-  remote_bucket_name = var.remote_bucket_name
+  remote_bucket_name = "aws4-terraform-state"
 }
