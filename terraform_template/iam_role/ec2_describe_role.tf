@@ -30,7 +30,12 @@ resource "aws_iam_role_policy" "describe_policy" {
          "Effect": "Allow",
          "Action": [
             "ec2:DescribeInstances",
-            "elasticloadbalancing:DescribeLoadBalancers"
+            "elasticloadbalancing:DescribeLoadBalancers",
+            "ec2:Describe*",
+            "elasticache:Describe*",
+            "rds:Describe*",
+            "route53:ListHostedZones",
+            "route53:ListResourceRecordSets"
          ],
          "Resource": "*"
       }
