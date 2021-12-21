@@ -8,13 +8,13 @@ output "dlm_iam_role" {
 
 
 # web_role made by kth
-output "web_describe_profile" {
-  value = module.iam.web_describe_profile
+output "web_was_describe_profile" {
+  value = module.iam.web_was_describe_profile
 }
 
-output "cloudwatch_profile" {
-  value = module.iam.cloudwatch_profile
-}
+# output "cloudwatch_profile" {
+#   value = module.iam.cloudwatch_profile
+# }
 
 
 

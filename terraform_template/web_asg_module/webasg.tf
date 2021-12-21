@@ -13,7 +13,7 @@ resource "aws_launch_configuration" "a4_web_lc" {
     image_id = aws_ami_from_instance.a4_web_ami.id
     instance_type = var.instance_type
     security_groups = [data.terraform_remote_state.sg.outputs.web_sg_id]
-    iam_instance_profile = data.terraform_remote_state.iam.outputs.cloudwatch_profile
+    iam_instance_profile = data.terraform_remote_state.iam.outputs.web_was_describe_profile
     key_name = var.key
     user_data = file("ssh.sh")
 }
