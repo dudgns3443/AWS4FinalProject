@@ -26,6 +26,15 @@ resource "aws_security_group_rule" "https_alb" {
   security_group_id = aws_security_group.a4_alb_sg.id
 }
 
+resource "aws_security_group_rule" "tomcat_alb" {
+  type = var.rule_type[0]
+  from_port = var.port_tomcat
+  to_port = var.port_tomcat
+  protocol = var.protocol
+  cidr_blocks = [var.route_cidr_global]
+  security_group_id = aws_security_group.a4_alb_sg.id
+}
+
 #ALB Security-Gruop-Rule egress
 resource "aws_security_group_rule" "egress_alb" {
   type = var.rule_type[1]

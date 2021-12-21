@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"nlb","Source":"../../terraform_template/nlb_module","Dir":"../../terraform_template/nlb_module"}]}
+{"Modules":[{"Key":"nlb","Source":"../../terraform_template/nlb_module","Dir":"../../terraform_template/nlb_module"},{"Key":"","Source":"","Dir":"."}]}
