@@ -19,6 +19,6 @@ terraform {
 
 
 module "lambda" {
-  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//lambda?ref=lambda-v0.0.1"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/lambda?ref=lambda-v0.0.1"
 
 }
