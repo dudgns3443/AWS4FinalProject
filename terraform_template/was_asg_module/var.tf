@@ -7,7 +7,7 @@
 #     type = string
 #     default = ""
 # }
-
+/*
 variable "region" {
     type = string
     default = "ap-northeast-2"
@@ -19,7 +19,7 @@ variable "vpc_cidr_web" {
 variable "vpc_cidr_was" {
     default = "10.20.0.0/16" 
 }
-
+*/
 
 variable "key" {
     type = string
@@ -30,7 +30,7 @@ variable "name" {
     type = string
     default = "a4"
 }
-
+/*
 variable "pub_cidr" {
     type = list
     default = ["10.10.0.0/24","10.10.1.0/24"]
@@ -120,12 +120,12 @@ variable "port_tomcat" {
     type = number
     default = 8100
 }
-
+*/
 variable "instance_type" {
     type = string
     default = "t2.micro"
 }
-
+/*
 variable "bastion_pip" {
     type = string
     default = "10.10.0.10"
@@ -200,7 +200,7 @@ variable "lis_default_action" {
     type = string
     default = "forward"
 }
-
+*/
 variable "min_auto" {
     type = number
     default = 2
@@ -210,7 +210,7 @@ variable "max_auto" {
     type = number
     default = 10
 }
-
+/*
 variable "db_allocated_storage" {
     type = number
     default = 20
@@ -265,3 +265,4 @@ variable "remote_bucket_name" {
   type        = string
   default     = null
 }
+*/

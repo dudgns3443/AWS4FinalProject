@@ -21,8 +21,8 @@ resource "aws_launch_configuration" "a4_web_lc" {
 #VPC-Web Auto Scaling
 resource "aws_autoscaling_group" "a4_web_auto" {
     name = "${var.name}-web"
-    min_size = var.min_auto
-    max_size = var.max_auto
+    min_size = var.web_min_auto
+    max_size = var.web_max_auto
     force_delete = false
     desired_capacity = 2
     health_check_grace_period = 60
@@ -31,7 +31,7 @@ resource "aws_autoscaling_group" "a4_web_auto" {
     vpc_zone_identifier = [data.terraform_remote_state.network.outputs.a4_sub_pri_web[0].id,data.terraform_remote_state.network.outputs.a4_sub_pri_web[1].id]
     tag {
      key                 = "Name"
-     value               = "a4-web-asg"
+     value               = "${var.name}-web-asg"
      propagate_at_launch = true
   }
 }

@@ -7,7 +7,7 @@
 #     type = string
 #     default = ""
 # }
-
+/*
 variable "region" {
     type = string
     default = "ap-northeast-2"
@@ -25,12 +25,12 @@ variable "key" {
     type = string
     default = "a4_key"
 }
-
+*/
 variable "name" {
     type = string
     default = "a4"
 }
-
+/*
 variable "pub_cidr" {
     type = list
     default = ["10.10.0.0/24","10.10.1.0/24"]
@@ -80,12 +80,12 @@ variable "protocol" {
     type = string
     default = "tcp"
 }
-
+*/
 variable "b_protocol" {
     type = string
     default = "TCP"
 }
-
+/*
 variable "b_protocol_http" {
     type = string
     default = "HTTP"
@@ -115,12 +115,12 @@ variable "port_redis" {
     type = number
     default = 6379
 }
-
+*/
 variable "port_tomcat" {
     type = number
     default = 8100
 }
-
+/*
 variable "instance_type" {
     type = string
     default = "t2.micro"
@@ -145,12 +145,12 @@ variable "instance_owner" {
     type = string
     default = "amazon"
 }
-
+*/
 variable "lb_type" {
     type = list
     default = ["application","network"]
 }
-
+/*
 variable "l7_protocol" {
     type = list
     default = ["http","https"]
@@ -195,12 +195,12 @@ variable "target_type" {
     type = string
     default = "instance"
 }
-
+*/
 variable "lis_default_action" {
     type = string
     default = "forward"
 }
-
+/*
 variable "min_auto" {
     type = number
     default = 2
@@ -264,4 +264,4 @@ variable "db_parameter_group_name" {
 variable "remote_bucket_name" {
   type        = string
   default     = null
-}
+}*/

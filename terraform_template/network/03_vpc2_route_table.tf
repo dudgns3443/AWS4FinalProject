@@ -8,7 +8,7 @@ resource "aws_route_table" "a4_rt_pubwas" {
   }
   
   tags = {
-    "Name" = "a4-rt-pubwas"
+    "Name" = "${var.name}-rt-pubwas"
   }
 }
 

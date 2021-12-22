@@ -10,3 +10,5 @@ secret_key.tf
 terraform-provider-aws_v3.70.0_x5.exe
 
 modules.json
+
+.terraform/

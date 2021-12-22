@@ -30,7 +30,7 @@ resource "aws_autoscaling_group" "a4_was_auto" {
     vpc_zone_identifier = [data.terraform_remote_state.network.outputs.a4_sub_pri_was[0].id,data.terraform_remote_state.network.outputs.a4_sub_pri_was[1].id]
     tag {
      key                 = "Name"
-     value               = "a4-was-asg"
+     value               = "${var.name}-was-asg"
      propagate_at_launch = true
   }
 }

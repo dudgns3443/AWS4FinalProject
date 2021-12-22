@@ -2,7 +2,7 @@ resource "aws_ebs_volume" "a4_ebs" {
   availability_zone = "${var.region}${var.az[0]}"
   size = 20
   tags = {
-    "Name" = "a4-ebs"
+    "Name" = "${var.name}-ebs"
   }
 }
 
