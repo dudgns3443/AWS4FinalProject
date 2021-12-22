@@ -1,34 +1,10 @@
-# variable "access_key" {
-#     type = string
-#     default = ""
-# }
 
-# variable "secret_key" {
-#     type = string
-#     default = ""
-# }
-
-variable "region" {
-    type = string
-    default = "ap-northeast-2"
-}
-
+#Network
 variable "vpc_cidr_web" {
     default = "10.10.0.0/16" 
 }
 variable "vpc_cidr_was" {
     default = "10.20.0.0/16" 
-}
-
-
-variable "key" {
-    type = string
-    default = "a4_key"
-}
-
-variable "name" {
-    type = string
-    default = "a4"
 }
 
 variable "pub_cidr" {
@@ -55,7 +31,7 @@ variable "db_cidr" {
     default = ["10.20.2.0/24","10.20.3.0/24"]
 }
 
-variable "az" {
+/*variable "az" {
     type = list
     default = ["a","c"]
 }
@@ -63,9 +39,10 @@ variable "az" {
 variable "route_cidr_global" {
     type = string
     default = "0.0.0.0/0"
-}
+}*/
 
 ##### Security gorup 이후
+/*-------------------------------------------------------------
 variable "rule_type" {
     type = list
     default = ["ingress","egress" ]
@@ -119,7 +96,7 @@ variable "port_redis" {
 variable "port_tomcat" {
     type = number
     default = 8100
-}
+}-----------------------------------------------------------*/
 
 variable "instance_type" {
     type = string
@@ -211,6 +188,7 @@ variable "max_auto" {
     default = 10
 }
 
+/*------------------------------------------------------------
 variable "db_allocated_storage" {
     type = number
     default = 20
@@ -260,8 +238,4 @@ variable "db_parameter_group_name" {
     type = string
     default = "default.mysql8.0"
 }
-
-variable "remote_bucket_name" {
-  type        = string
-  default     = null
-}
+------------------------------------------------------------*/

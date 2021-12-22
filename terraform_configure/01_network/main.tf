@@ -20,10 +20,11 @@ terraform {
 
 module "network" {
   source = "../../terraform_template/network"
-  remote_bucket_name = "aws4-terraform-state"
+
+  remote_bucket_name = var.remote_bucket_name
+  region = var.region
+  key = var.key
+  name = var.name
+
 }
 
-variable "remote_bucket_name" {
-  type        = string
-  default     = "aws4-terraform-state"
-}
