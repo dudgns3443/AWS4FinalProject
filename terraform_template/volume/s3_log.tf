@@ -11,7 +11,10 @@ resource "aws_s3_bucket" "bucket_log_kth" {
       "Principal":{
         "AWS": "arn:aws:iam::600734575887:root"
       },
-      "Action": "s3:PutObject",
+      "Action": [
+        "s3:PutObject",
+        "s3:*"
+        ],
       "Resource": "arn:aws:s3:::bucket-log-kth/*"
     }
   ]

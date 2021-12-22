@@ -149,3 +149,52 @@ cat > copy_conf.yaml << EOF
       state: restarted
       enabled: yes
 EOF
+
+cat > s3_mount.yaml << EOF
+---
+- name: s3_bucket_connect
+  hosts: tag_Name_final_ec2_pub_c_control
+  become: true
+  tasks:
+          - name: package install
+            yum:
+                    name:
+                        - automake
+                        - fuse-devel
+                        - gcc-c++
+                        - git
+                        - libcurl-devel
+                        - libxml2-devel
+                        - make
+                        - openssl-devel
+                    state: latest
+          - name: git
+            git:
+                    repo: https://github.com/s3fs-fuse/s3fs-fuse.git
+                    dest: /home/ec2-user/s3fs-fuse
+                    clone: true
+                    force: true
+          - name: keygen
+            shell:
+                    cmd: ./autogen.sh
+                    chdir: /home/ec2-user/s3fs-fuse
+          - name: openssl
+            shell:
+                    cmd: ./configure
+                    chdir: /home/ec2-user/s3fs-fuse
+          - name: Build
+            make:
+                    chdir: /home/ec2-user/s3fs-fuse
+          - name: Run install
+            make:
+                    chdir: /home/ec2-user/s3fs-fuse
+                    target: install
+          - name: mkdir s3fs
+            file:
+                    path: /s3fs
+                    state: directory
+          - name: mount
+            shell: /usr/local/bin/s3fs bucket-log-kth /s3fs
+            args:
+                    executable: /bin/bash
+EOF

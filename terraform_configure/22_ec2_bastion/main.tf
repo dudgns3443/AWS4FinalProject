@@ -21,10 +21,10 @@ terraform {
 
 
 module "ec2_bastion" {
-  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/ec2_bastion?ref=bastion-v0.0.1"
-  #  source = "../../terraform_template/ec2_bastion"
+  #source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/ec2_bastion?ref=bastion-v0.0.1"
+  source = "../../terraform_template/ec2_bastion"
 
-        remote_bucket_name = var.remote_bucket_name
+      remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key
       name = var.name
