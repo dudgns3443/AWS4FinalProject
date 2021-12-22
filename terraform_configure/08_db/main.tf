@@ -21,6 +21,6 @@ terraform {
 
 
 module "db" {
-  source = "../../terraform_template/db"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/db?ref=db-v0.0.1"
   remote_bucket_name = "aws4-terraform-state"
 }
