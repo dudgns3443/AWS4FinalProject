@@ -21,7 +21,15 @@ terraform {
 
 
 module "ec2_bastion" {
-  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/ec2_bastion?ref=bastion-v0.0.1"
-  source = "../../terraform_template/ec2_bastion"
-  remote_bucket_name = "aws4-terraform-state"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/ec2_bastion?ref=bastion-v0.0.1"
+  #  source = "../../terraform_template/ec2_bastion"
+
+        remote_bucket_name = var.remote_bucket_name
+      region = var.region
+      key = var.key
+      name = var.name
+      az = var.az
+      route_cidr_global = var.route_cidr_global
+      instance_type = var.instance_type
+      bastion_pip = var.bastion_pip
 }
