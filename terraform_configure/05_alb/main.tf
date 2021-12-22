@@ -19,5 +19,12 @@ terraform {
 
 module "alb" {
   source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/alb_module?ref=alb-v0.0.1"
-  remote_bucket_name = "aws4-terraform-state"
+      remote_bucket_name = var.remote_bucket_name
+      region = var.region
+      key = var.key
+      name = var.name
+      az = var.az
+      route_cidr_global = var.route_cidr_global
+      instance_type = var.instance_type
+      bastion_pip = var.bastion_pip
 }
