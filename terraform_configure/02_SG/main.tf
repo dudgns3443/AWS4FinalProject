@@ -19,6 +19,6 @@ terraform {
 }
 
 module "sg" {
-    source = "../../terraform_template/sg_module"
+    source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//sg_module?ref=sg-v0.0.1"
     remote_bucket_name = "aws4-terraform-state"
 }
