@@ -28,11 +28,12 @@ resource "aws_db_instance" "a4_final_db" {
   backup_retention_period  = var.retention_period # 백업 보존 기간       
   delete_automated_backups = true                 # default는 true db인스턴스가 생성되고 백업파일을 삭제할 것 인지    
 
+  
   /*
     restore_to_point_in_time {
         
         source_db_instance_identifier = var.db_identifier
-        source_dbi_resource_id = aws_db_instance.a4_final_db.id
+        source_dbi_resource_id = "teamaws4fdsfds" # Must be unique
         use_latest_restorable_time = true
         }
   */
