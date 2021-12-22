@@ -31,7 +31,9 @@ variable "instance_type" {
     default = "t2.micro"
 }
 
+/*
 variable "bastion_pip" {
     type = string
     default = "10.10.0.10"
 }
+*/

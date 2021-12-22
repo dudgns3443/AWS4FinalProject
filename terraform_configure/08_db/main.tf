@@ -30,6 +30,6 @@ module "db" {
       az = var.az
       route_cidr_global = var.route_cidr_global
       instance_type = var.instance_type
-      bastion_pip = var.bastion_pip
+    #  bastion_pip = var.bastion_pip
       maintenance_time = "Fri:22:00-Fri:23:00"
 }
