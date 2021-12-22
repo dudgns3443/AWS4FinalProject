@@ -21,8 +21,8 @@ terraform {
 
 
 module "db" {
-  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/db?ref=db-v0.0.1"
-  source = "../../terrafrom_template/ec2_bastion"
+  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/db?ref=db-v0.01"
+   source = "../../terraform_template/db"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key
@@ -31,4 +31,5 @@ module "db" {
       route_cidr_global = var.route_cidr_global
       instance_type = var.instance_type
       bastion_pip = var.bastion_pip
+      maintenance_time = "Fri:22:00-Fri:23:00"
 }
