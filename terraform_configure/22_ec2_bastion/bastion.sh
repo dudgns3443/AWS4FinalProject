@@ -198,3 +198,6 @@ cat > s3_mount.yaml << EOF
             args:
                     executable: /bin/bash
 EOF
+
+wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-was.yaml
+wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-web.yaml
