@@ -18,7 +18,8 @@ terraform {
 }
 
 module "nlb" {
-  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/nlb_module?ref=nlb-v0.0.1"
+  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/nlb_module?ref=nlb-v0.0.1"
+  source = "../../terraform_template/nlb_module"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key
