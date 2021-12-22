@@ -21,6 +21,6 @@ terraform {
 
 
 module "a4_golden_img_module" {
-  source = "../../terraform_template/golden_img"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/golden_img?ref=golden_img-v0.0.1"
   remote_bucket_name = "aws4-terraform-state"
 }
