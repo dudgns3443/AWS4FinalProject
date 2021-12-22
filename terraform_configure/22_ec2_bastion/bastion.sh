@@ -90,13 +90,13 @@ http {
         #     proxy_pass http://NLB_DNS:8080; 
         #     proxy_set_header X-Real-IP $remote_addr; 
         #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
-        #     proxy_set_header Hsot $http_host; 
+        #     proxy_set_header Host $http_host; 
         # }
         location /nlb/ { 
             proxy_pass http://a4-nlb-159008c51cde6d9f.elb.ap-northeast-2.amazonaws.com:8100/; 
             proxy_set_header X-Real-IP $remote_addr; 
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
-            proxy_set_header Hsot $http_host; 
+            proxy_set_header Host $http_host; 
         }        
     }
 
