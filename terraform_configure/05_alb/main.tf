@@ -18,6 +18,6 @@ terraform {
 }
 
 module "alb" {
-  source = "../../terraform_template/alb_module"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/alb_module?ref=alb-v0.0.1"
   remote_bucket_name = "aws4-terraform-state"
 }

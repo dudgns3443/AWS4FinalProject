@@ -12,7 +12,7 @@ variable "region" {
   type    = string
   default = "ap-northeast-2"
 }
-
+/*
 variable "vpc_cidr_web" {
   default = "10.10.0.0/16"
 }
@@ -210,7 +210,7 @@ variable "max_auto" {
   type    = number
   default = 10
 }
-
+*/
 variable "db_allocated_storage" {
   type    = number
   default = 20

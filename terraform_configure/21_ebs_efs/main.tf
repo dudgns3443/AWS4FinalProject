@@ -20,6 +20,6 @@ terraform {
 }
 
 module "efs_ebs" {
-  source = "../../terraform_template/efs_ebs"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/efs_ebs?ref=efs-v0.0.1"
   remote_bucket_name = "aws4-terraform-state"
 }

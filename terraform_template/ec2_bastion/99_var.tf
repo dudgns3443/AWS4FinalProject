@@ -12,7 +12,7 @@ variable "region" {
     type = string
     default = "ap-northeast-2"
 }
-
+/*
 variable "vpc_cidr_web" {
     default = "10.10.0.0/16" 
 }
@@ -119,7 +119,7 @@ variable "port_redis" {
 variable "port_tomcat" {
     type = number
     default = 8100
-}
+}*/
 
 variable "instance_type" {
     type = string
@@ -145,7 +145,7 @@ variable "instance_owner" {
     type = string
     default = "amazon"
 }
-
+/*
 variable "lb_type" {
     type = list
     default = ["application","network"]
@@ -263,4 +263,4 @@ variable "db_parameter_group_name" {
 variable "remote_bucket_name" {
   type        = string
   default     = null
-}
+}*/
