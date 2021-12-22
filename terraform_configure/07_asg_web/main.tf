@@ -19,7 +19,8 @@ terraform {
 
 
 module "web_asg" {
-  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/web_asg_module?ref=asg_web-v0.0.1"
+  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/web_asg_module?ref=asg_web-v0.0.1"
+  source = "../../terraform_template/web_asg_module" 
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key

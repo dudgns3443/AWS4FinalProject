@@ -19,6 +19,7 @@ terraform {
 
 
 module "cloudwatch" {
+  #source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/cloudwatch?ref=cloudwatch-v0.0.1"
   source = "../../terraform_template/cloudwatch"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
