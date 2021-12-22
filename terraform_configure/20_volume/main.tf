@@ -20,6 +20,6 @@ terraform {
 }
 
 module "volume" {
-  source = "../../terraform_template/volume"
+  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/volume?ref=volume-v0.0.1"
   remote_bucket_name = "aws4-terraform-state"
 }
