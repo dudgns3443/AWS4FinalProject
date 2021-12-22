@@ -16,15 +16,15 @@ resource "aws_security_group_rule" "ssh-was" {
   security_group_id = aws_security_group.a4_was_sg.id
 }
 
-#Was-Server Security-Group-Rule for tomcat
-resource "aws_security_group_rule" "tomcat_was1" {
-  type = var.rule_type[0]
-  from_port = var.port_tomcat
-  to_port = var.port_tomcat
-  protocol = var.protocol
-  cidr_blocks = [var.pri_cidr_was[0]]
-  security_group_id = aws_security_group.a4_was_sg.id
-}
+# #Was-Server Security-Group-Rule for tomcat
+# resource "aws_security_group_rule" "tomcat_was1" {
+#   type = var.rule_type[0]
+#   from_port = var.port_tomcat
+#   to_port = var.port_tomcat
+#   protocol = var.protocol
+#   cidr_blocks = [var.pri_cidr_was[0]]
+#   security_group_id = aws_security_group.a4_was_sg.id
+# }
 
 #Was-Server Security-Group-Rule for tomcat
 resource "aws_security_group_rule" "tomcat_was2" {
@@ -32,7 +32,7 @@ resource "aws_security_group_rule" "tomcat_was2" {
   from_port = var.port_tomcat
   to_port = var.port_tomcat
   protocol = var.protocol
-  cidr_blocks = [var.pri_cidr_was[1]]
+  cidr_blocks = [var.route_cidr_global]
   security_group_id = aws_security_group.a4_was_sg.id
 }
 

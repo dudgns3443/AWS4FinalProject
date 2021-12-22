@@ -7,14 +7,14 @@ output "dlm_iam_role" {
 }
 
 
-output "web_describe_profile" {
-    value = aws_iam_instance_profile.web_profile.name
+output "web_was_describe_profile" {
+    value = aws_iam_instance_profile.web_was_profile.name
 }
 
 
-output "cloudwatch_profile" {
-    value = aws_iam_instance_profile.cw_role_profile.name
-}
+# output "cloudwatch_profile" {
+#     value = aws_iam_instance_profile.cw_role_profile.name
+# }
 
 
 

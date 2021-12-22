@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"efs_ebs","Source":"../../terraform_template/efs_ebs","Dir":"../../terraform_template/efs_ebs"}]}
+{"Modules":[{"Key":"efs_ebs","Source":"../../terraform_template/efs_ebs","Dir":"../../terraform_template/efs_ebs"},{"Key":"","Source":"","Dir":"."}]}

@@ -1,5 +1,5 @@
-resource "aws_iam_role" "web_role" {
-  name = "web-role"
+resource "aws_iam_role" "web_was_role" {
+  name = "web-was-role"
 
   assume_role_policy = <<EOF
 {
@@ -18,9 +18,9 @@ resource "aws_iam_role" "web_role" {
 EOF
 }
 
-resource "aws_iam_role_policy" "web_policy" {
-    name = "web-policy"
-    role = aws_iam_role.web_role.id
+resource "aws_iam_role_policy" "web_was_policy" {
+    name = "web-was-policy"
+    role = aws_iam_role.web_was_role.id
 
     policy = <<EOF
 {
@@ -38,12 +38,64 @@ resource "aws_iam_role_policy" "web_policy" {
          "Effect": "Allow",
          "Action": "s3:PutObject",
          "Resource": "arn:aws:s3:::bucket-log-kth/*"
-      }
+      },
+       {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutMetricData",
+                "ec2:DescribeVolumes",
+                "ec2:DescribeTags",
+                "logs:PutLogEvents",
+                "logs:DescribeLogStreams",
+                "logs:DescribeLogGroups",
+                "logs:CreateLogStream",
+                "logs:CreateLogGroup"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameter"
+            ],
+            "Resource": "arn:aws:ssm:*:*:parameter/AmazonCloudWatch-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutMetricData",
+                "ds:CreateComputer",
+                "ds:DescribeDirectories",
+                "ec2:DescribeInstanceStatus",
+                "logs:*",
+                "ssm:*",
+                "ec2messages:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "arn:aws:iam::*:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM*",
+            "Condition": {
+                "StringLike": {
+                    "iam:AWSServiceName": "ssm.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:DeleteServiceLinkedRole",
+                "iam:GetServiceLinkedRoleDeletionStatus"
+            ],
+            "Resource": "arn:aws:iam::*:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM*"
+        }
    ]
 }
   EOF
 }
-resource "aws_iam_instance_profile" "web_profile" {
-  name = "web_profile"
-  role = aws_iam_role.web_role.name
+resource "aws_iam_instance_profile" "web_was_profile" {
+  name = "web_was_profile"
+  role = aws_iam_role.web_was_role.name
 }

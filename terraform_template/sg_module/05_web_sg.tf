@@ -46,6 +46,15 @@ resource "aws_security_group_rule" "efs-web" {
   security_group_id = aws_security_group.a4_web_sg.id
 }
 
+resource "aws_security_group_rule" "tomcat_web" {
+  type = var.rule_type[0]
+  from_port = var.port_tomcat
+  to_port = var.port_tomcat
+  protocol = var.protocol
+  cidr_blocks = [var.route_cidr_global]
+  security_group_id = aws_security_group.a4_web_sg.id
+}
+
 #Web-Server Security-Group-Rule egress
 resource "aws_security_group_rule" "egress_web" {
   type = var.rule_type[1]
