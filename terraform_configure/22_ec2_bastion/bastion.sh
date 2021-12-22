@@ -153,7 +153,7 @@ EOF
 cat > s3_mount.yaml << EOF
 ---
 - name: s3_bucket_connect
-  hosts: tag_Name_final_ec2_pub_c_control
+  hosts: localhost
   become: true
   tasks:
           - name: package install
