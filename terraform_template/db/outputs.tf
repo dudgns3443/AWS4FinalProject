@@ -1,4 +1,4 @@
 variable "remote_bucket_name" {
-  type        = string
-  default     = null
+  type    = string
+  default = null
 }

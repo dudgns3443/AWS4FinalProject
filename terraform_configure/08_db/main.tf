@@ -20,7 +20,7 @@ terraform {
 }
 
 
-module "a4_golden_img_module" {
+module "db" {
   source = "../../terraform_template/db"
   remote_bucket_name = "aws4-terraform-state"
 }
