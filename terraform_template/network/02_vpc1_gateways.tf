@@ -2,7 +2,7 @@
 resource "aws_eip" "a4_eip_ng_web" {
   vpc = true
   tags = {
-    "Name" = "a4-ng-web"
+    "Name" = "${var.name}-ng-web"
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_internet_gateway" "a4_ig_web" {
   vpc_id = aws_vpc.a4_vpc_web.id
 
   tags = {
-    "Name" = "a4-ig-web"
+    "Name" = "${var.name}-ig-web"
   }
 }
 

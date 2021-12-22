@@ -15,7 +15,7 @@ resource "aws_db_instance" "a4_final_db" {
     vpc_security_group_ids = [data.terraform_remote_state.sg.outputs.db_sg_id]
     skip_final_snapshot = true
     tags = {
-        "Name" = "a4-db"
+        "Name" = "${var.name}-db"
     }
 }
 
@@ -26,7 +26,7 @@ resource "aws_db_subnet_group" "a4_dbsg" {
         data.terraform_remote_state.network.outputs.a4_sub_pri_db[1].id
     ]
     tags = {
-        "Name" = "a4-dbsg"
+        "Name" = "${var.name}-dbsg"
     }
 }
 

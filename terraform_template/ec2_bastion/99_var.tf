@@ -54,12 +54,12 @@ variable "db_cidr" {
     type = list
     default = ["10.20.2.0/24","10.20.3.0/24"]
 }
-
+*/
 variable "az" {
     type = list
     default = ["a","c"]
 }
-
+/*
 variable "route_cidr_global" {
     type = string
     default = "0.0.0.0/0"

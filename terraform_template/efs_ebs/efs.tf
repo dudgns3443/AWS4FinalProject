@@ -1,7 +1,7 @@
 resource "aws_efs_file_system" "a4_efs" {
-    creation_token = "a4_token"
+    creation_token = "${var.name}_token"
     #availability_zone_name = "ap-northeast-2a"
-    tags = { "Name" = "a4-efs" }
+    tags = { "Name" = "${var.name}-efs" }
     lifecycle_policy {
         transition_to_ia = "AFTER_30_DAYS"
     }

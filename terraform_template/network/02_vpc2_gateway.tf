@@ -3,7 +3,7 @@
 resource "aws_eip" "a4_eip_ng_was" {
   vpc = true
   tags = {
-    "Name" = "a4-ng-was"
+    "Name" = "${var.name}-ng-was"
   }
 }
 # VPC-Was IGW
@@ -11,7 +11,7 @@ resource "aws_internet_gateway" "a4_ig_was" {
   vpc_id = aws_vpc.a4_vpc_was.id
 
   tags = {
-    "Name" = "a4-ig-was"
+    "Name" = "${var.name}-ig-was"
   }
 }
 

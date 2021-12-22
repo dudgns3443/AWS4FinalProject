@@ -7,7 +7,7 @@
 #     type = string
 #     default = ""
 # }
-
+/*
 variable "region" {
     type = string
     default = "ap-northeast-2"
@@ -25,12 +25,12 @@ variable "key" {
     type = string
     default = "a4_key"
 }
-
+*/
 variable "name" {
     type = string
     default = "a4"
 }
-
+/*
 variable "pub_cidr" {
     type = list
     default = ["10.10.0.0/24","10.10.1.0/24"]
@@ -90,12 +90,12 @@ variable "b_protocol_http" {
     type = string
     default = "HTTP"
 }
-
+*/
 variable "port_http" {
     type = number
     default = 80
 }
-
+/*
 variable "port_https" {
     type = number
     default = 443
@@ -145,6 +145,7 @@ variable "instance_owner" {
     type = string
     default = "amazon"
 }
+*/
 
 variable "lb_type" {
     type = list
@@ -190,7 +191,7 @@ variable "unhealthy_threshold" {
     type = number
     default = 2
 }
-
+/*
 variable "target_type" {
     type = string
     default = "instance"
@@ -265,3 +266,4 @@ variable "remote_bucket_name" {
   type        = string
   default     = null
 }
+*/

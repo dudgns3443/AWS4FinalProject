@@ -31,16 +31,6 @@ variable "db_cidr" {
     default = ["10.20.2.0/24","10.20.3.0/24"]
 }
 
-/*variable "az" {
-    type = list
-    default = ["a","c"]
-}
-
-variable "route_cidr_global" {
-    type = string
-    default = "0.0.0.0/0"
-}*/
-
 ##### Security gorup 이후
 /*-------------------------------------------------------------
 variable "rule_type" {
@@ -97,7 +87,7 @@ variable "port_tomcat" {
     type = number
     default = 8100
 }-----------------------------------------------------------*/
-
+/*
 variable "instance_type" {
     type = string
     default = "t2.micro"
@@ -187,7 +177,7 @@ variable "max_auto" {
     type = number
     default = 10
 }
-
+*/
 /*------------------------------------------------------------
 variable "db_allocated_storage" {
     type = number
