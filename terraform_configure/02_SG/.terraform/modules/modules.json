@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"sg","Source":"git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/sg_module?ref=sg-v0.0.1","Dir":".terraform/modules/sg/terraform_template/sg_module"},{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"sg","Source":"../../terraform_template/sg_module","Dir":"../../terraform_template/sg_module"},{"Key":"","Source":"","Dir":"."}]}

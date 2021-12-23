@@ -87,13 +87,13 @@ http {
         }
 
         # location /nlb/ { 
-        #     proxy_pass http://NLB_DNS:8100/; 
+        #     proxy_pass http://NLB_DNS:8080; 
         #     proxy_set_header X-Real-IP $remote_addr; 
         #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
         #     proxy_set_header Host $http_host; 
         # }
         location /nlb/ { 
-            proxy_pass http://a4-nlb-f1d58701680af734.elb.ap-northeast-2.amazonaws.com:8100/; 
+            proxy_pass http://a4-nlb-159008c51cde6d9f.elb.ap-northeast-2.amazonaws.com:8100/; 
             proxy_set_header X-Real-IP $remote_addr; 
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
             proxy_set_header Host $http_host; 
@@ -202,4 +202,16 @@ EOF
 wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-was.yaml
 wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-web.yaml
 
+# KST 시간
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+# bastion log 
+sudo -i
+cat > bastion_log.sh << EOF
+# bastion_sys_log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/$(date "+%Y-%m-%d").log
+EOF
+
+chmod 777 bastion_log.sh
+
+echo "* * * * * root bash /root/bastion_log.sh" >> /etc/crontab

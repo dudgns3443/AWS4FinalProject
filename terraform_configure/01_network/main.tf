@@ -19,8 +19,8 @@ terraform {
 
 
 module "network" {
-  source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/network?ref=network-v0.0.1"
-
+  #source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/network?ref=network-v0.0.1"
+      source = "../../terraform_template/01_network"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key

@@ -19,7 +19,7 @@ terraform {
 
 
 module "iam" {
-  source             = "../../terraform_template/iam_role"
+  source             = "../../terraform_template/00_iam_role"
 #  remote_bucket_name = "aws4-terraform-state"
 
   remote_bucket_name = var.remote_bucket_name
