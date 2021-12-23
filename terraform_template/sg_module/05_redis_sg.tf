@@ -13,7 +13,7 @@ resource "aws_security_group_rule" "redis_rule" {
   from_port = var.port_redis
   to_port = var.port_redis
   protocol = var.protocol
-  source_security_group_id = aws_security_group.was_sg.id
+  source_security_group_id = aws_security_group.a4_was_sg.id
   security_group_id = aws_security_group.redis_sg.id
 }
 

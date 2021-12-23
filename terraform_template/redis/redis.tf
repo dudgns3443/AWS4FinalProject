@@ -3,11 +3,11 @@ resource "aws_elasticache_cluster" "redis" {
   engine               = "redis"
   node_type            = "cache.t2.micro"
   num_cache_nodes      = 1
-  parameter_group_name = "default.redis6.2"
-  engine_version       = "3.2.10"
-  port                 = 6379
+  parameter_group_name = "default.redis6.x"
+  engine_version       = "6.x"
+  port                 = var.port_redis
   subnet_group_name    = aws_elasticache_subnet_group.redis_subnet.name
-  security_group_ids   = [data.terraform_remote_state.sg.outputs.]
+  security_group_ids   = [data.terraform_remote_state.sg.outputs.redis_sg_id]
 }
 resource "aws_elasticache_subnet_group" "redis_subnet" {
   name       = "tf-cache-subnet"

@@ -25,3 +25,6 @@ output "was_sg_id" {
 output "web_sg_id" {
     value = module.sg.web_sg_id
 }
+output "redis_sg_id" {
+  value       = module.sg.redis_sg_id
+}

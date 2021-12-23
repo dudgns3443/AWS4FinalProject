@@ -26,11 +26,6 @@ output "web_sg_id" {
     value = aws_security_group.a4_web_sg.id
 }
 
-
-output "a4_vpc_web"{
-    value = data.terraform_remote_state.network.outputs.a4_vpc_web_id
-}
-
-output "a4_vpc_was"{
-    value = data.terraform_remote_state.network.outputs.a4_vpc_was_id
+output "redis_sg_id" {
+    value = aws_security_group.redis_sg.id
 }
