@@ -32,7 +32,7 @@ echo "[defaults]
 inventory = ./aws_ec2.yml
 remote_user = ec2-user
 ask_pass = false
-private_key_file = /home/ec2-user/a4_key.pem-
+private_key_file = /home/ec2-user/a4_key.pem
 [privilege_escalation]
 become = true
 become_method = sudo
