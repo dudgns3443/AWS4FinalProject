@@ -201,3 +201,5 @@ EOF
 
 wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-was.yaml
 wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-web.yaml
+
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
