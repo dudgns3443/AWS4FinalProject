@@ -6,18 +6,32 @@ amazon-linux-extras install -y ansible2
 
 cd /home/ec2-user
 
-echo '[web]' > inventory
-aws ec2 describe-instances --filters Name=tag-value,Values=a4-web-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text --region=ap-northeast-2 >> inventory
-echo '[was]' >> inventory
+cat > aws_ec2.yml <<EOF
+plugin: aws_ec2
 
-aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'Reservations[*].Instances[*].NetworkInterfaces[*].PrivateIpAddresses[*].PrivateIpAddress' --output text --region=ap-northeast-2 >> inventory
+regions:
+  - ap-northeast-2
+filters:
+  instance-state-name: running
 
+compose:
+  ansible_host: private_ip_address
+
+hostnames:
+  - private-ip-address
+
+keyed_groups:
+  - prefix: tag
+    key: tags
+EOF
+ansible-inventory -i aws_ec2.yml
 aws elbv2 describe-load-balancers --names "a4-nlb" --query "LoadBalancers[*].DNSName[]" --output text --region=ap-northeast-2 > nlb_dns.txt
 
 echo "[defaults]
-inventory = ./inventory
+inventory = ./aws_ec2.yml
 remote_user = ec2-user
 ask_pass = false
+private_key_file = /home/ec2-user/a4_key.pem-
 [privilege_escalation]
 become = true
 become_method = sudo
@@ -93,10 +107,7 @@ http {
         #     proxy_set_header Host $http_host; 
         # }
         location /nlb/ { 
-            proxy_pass http://a4-nlb-159008c51cde6d9f.elb.ap-northeast-2.amazonaws.com:8100/; 
-            proxy_set_header X-Real-IP $remote_addr; 
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
-            proxy_set_header Host $http_host; 
+            proxy_pass http://a4-nlb-c2fa7f40e6916a9b.elb.ap-northeast-2.amazonaws.com:8100/; 
         }        
     }
 
