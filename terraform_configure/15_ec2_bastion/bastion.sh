@@ -3,7 +3,8 @@
 wget -P /home/ec2-user/ https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/a4_key.pem
 
 amazon-linux-extras install -y ansible2
-
+yum install -y python-pip
+pip install boto3
 cd /home/ec2-user
 
 cat > aws_ec2.yml <<EOF
@@ -146,7 +147,7 @@ aws ec2 describe-instances --filters Name=tag-value,Values=a4-was-asg --query 'R
 
 cat > copy_conf.yaml << EOF
 - name: Copy nginx configuration
-  hosts: web
+  hosts: tag_Name_a4_web_asg
   tasks:
   - name: make backup nginx.conf
     command: cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
