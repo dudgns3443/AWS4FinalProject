@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"a4_golden_img_module","Source":"git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/golden_img?ref=golden_img-v0.0.1","Dir":".terraform/modules/a4_golden_img_module/terraform_template/golden_img"}]}

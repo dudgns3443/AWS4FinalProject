@@ -20,7 +20,7 @@ terraform {
 
 module "redis" {
 #   source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/redis?ref=redis-v0.0.1"
-    source = "../../terraform_template/redis"
+    source = "../../terraform_template/10_redis"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key

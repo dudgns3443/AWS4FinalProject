@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"s3_log","Source":"../../terraform_template/volume","Dir":"../../terraform_template/volume"},{"Key":"alb","Source":"../../terraform_template/alb_module","Dir":"../../terraform_template/alb_module"}]}

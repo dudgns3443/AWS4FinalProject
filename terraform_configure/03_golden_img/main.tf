@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "ap-northeast-2"
+  region = "ap-northeast-2"
   profile = "bespin-aws4"
   #access_key = var.access_key
   #secret_key = var.secret_key
@@ -7,12 +7,12 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    encrypt = true
-    key     = "ec2_bastion/terraform.tfstate"
+    encrypt        = true
+    key            = "golden_img/terraform.tfstate"
 
-    region  = "ap-northeast-2"
+    region         = "ap-northeast-2" 
     profile = "bespin-aws4"
-    bucket  = "aws4-terraform-state"
+    bucket         = "aws4-terraform-state"
     dynamodb_table = "a4-terraform-locks"
   }
 
@@ -20,10 +20,9 @@ terraform {
 }
 
 
-module "ec2_bastion" {
-  #source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/ec2_bastion?ref=bastion-v0.0.1"
-  source = "../../terraform_template/ec2_bastion"
-
+module "a4_golden_img_module" {
+  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/golden_img?ref=golden_img-v0.0.1"
+  source = "../../terraform_template/03_golden_img"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key
