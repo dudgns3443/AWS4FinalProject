@@ -30,19 +30,3 @@ variable "instance_type" {
 variable "bastion_pip" {
     type = string
 }
-
-variable "port_http" {
-    type = number
-}
-
-variable "port_tomcat" {
-    type = number
-}
-
-variable "lb_type" {
-    type = list
-}
-
-variable "lis_default_action" {
-    type = string
-}
