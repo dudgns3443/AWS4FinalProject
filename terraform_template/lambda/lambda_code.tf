@@ -84,3 +84,11 @@ resource "aws_lambda_permission" "test" {
   principal     = "s3.amazonaws.com"
   source_arn    = "arn:aws:s3:::${aws_s3_bucket.bucket.id}"
 }
+
+resource "aws_ses_email_identity" "ses_1" {
+  email = "kimjoe1997@naver.com"
+}
+
+resource "aws_ses_email_identity" "ses_2" {
+  email = "sbs880824@gmail.com"
+}
