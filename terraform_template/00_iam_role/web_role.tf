@@ -39,10 +39,7 @@ resource "aws_iam_role_policy" "web_was_policy" {
          "Action": [
           "s3:PutObject",
           "ec2:Describe*",
-          "elasticache:Describe*",
-          "rds:Describe*",
-          "route53:ListHostedZones",
-          "route53:ListResourceRecordSets"
+          "elasticache:Describe*"
          ],
          "Resource": "arn:aws:s3:::bucket-log-kth/*"
       },

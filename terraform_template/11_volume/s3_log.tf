@@ -16,7 +16,27 @@ resource "aws_s3_bucket" "bucket_log_kth" {
         "s3:*"
         ],
       "Resource": "arn:aws:s3:::bucket-log-kth/*"
-    }
+    },
+          {
+          "Action": "s3:GetBucketAcl",
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::bucket-log-kth",
+          "Principal": { "Service": "logs.ap-northeast-2.amazonaws.com" }
+      },
+      {
+          "Action": "s3:PutObject" ,
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::bucket-log-kth/*",
+          "Condition": { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
+          "Principal": { "Service": "logs.ap-northeast-2.amazonaws.com" }
+      },
+      {
+          "Action": "s3:PutObject" ,
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::bucket-log-kth/*",
+          "Condition": { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
+          "Principal": { "AWS": "arn:aws:iam::600734575887:root" }
+      }
   ]
 }
   EOF

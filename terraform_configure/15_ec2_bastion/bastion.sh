@@ -1,4 +1,5 @@
 #!/bin/bash
+#!/bin/sh
 
 wget -P /home/ec2-user/ https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/a4_key.pem
 
@@ -221,9 +222,9 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 sudo -i
 cat > /root/bastion_log.sh << EOF
 # bastion_sys_log
-sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/$(date "+%Y-%m-%d").log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/\$(date "+%Y-%m-%d").log
 EOF
 
 chmod 777 /root/bastion_log.sh
 
-echo "30 12 * * * root bash /root/bastion_log.sh" >> /etc/crontab
+echo "* * * * * root bash /root/bastion_log.sh" >> /etc/crontab
