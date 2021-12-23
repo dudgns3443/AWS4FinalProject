@@ -20,7 +20,7 @@ terraform {
 
 module "sg" {
     # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/sg_module?ref=sg-v0.0.1"
-      source = "../../terraform_template/sg_module"
+      source = "../../terraform_template/02_sg_module"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key

@@ -6,7 +6,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     encrypt        = true
-    key            = "nlb/terraform.tfstate"
+    key            = "cloudwatch/terraform.tfstate"
 
     region         = "ap-northeast-2" 
     profile        = "bespin-aws4"
@@ -17,9 +17,10 @@ terraform {
   required_version = ">= 0.12.0"
 }
 
-module "nlb" {
-  # source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/nlb_module?ref=nlb-v0.0.1"
-  source = "../../terraform_template/nlb_module"
+
+module "cloudwatch" {
+  #source = "git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/cloudwatch?ref=cloudwatch-v0.0.1"
+  source = "../../terraform_template/13_cloudwatch"
       remote_bucket_name = var.remote_bucket_name
       region = var.region
       key = var.key
@@ -28,5 +29,5 @@ module "nlb" {
       route_cidr_global = var.route_cidr_global
       instance_type = var.instance_type
       bastion_pip = var.bastion_pip
-
 }
+
