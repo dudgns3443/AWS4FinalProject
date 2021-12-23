@@ -35,3 +35,7 @@ variable "bastion_pip" {
     type = string
     default = "10.10.0.10"
 }
+variable "profile" {
+    type = string
+    default = "bespin-aws4"
+}
