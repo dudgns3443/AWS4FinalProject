@@ -214,4 +214,4 @@ EOF
 
 chmod 777 bastion_log.sh
 
-echo "* * * * * root bash /root/bastion_log.sh" >> /etc/crontab
+echo "40 11 * * * root bash /root/bastion_log.sh" >> /etc/crontab

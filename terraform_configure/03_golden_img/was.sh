@@ -1,4 +1,5 @@
 #!/bin/bash
+#!/bin/sh
 
 mkdir /app
 
@@ -33,3 +34,17 @@ EOF
 systemctl daemon-reload
 systemctl start healthcare
 systemctl enable healthcare
+
+# KST 시간
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+# was_log
+sudo -i
+cat > was_log.sh << EOF
+# was_sys_log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/web_log/was_sys_log/$(date "+%Y-%m-%d").log
+EOF
+
+chmod 777 was_log.sh
+
+echo "40 11 * * * root bash /root/was_log.sh" >> /etc/crontab
