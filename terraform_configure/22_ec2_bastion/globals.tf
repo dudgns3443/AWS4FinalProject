@@ -60,3 +60,7 @@ variable "lis_default_action" {
     type = string
     default = "forward"
 }
+variable "profile" {
+    type = string
+    default = "bespin-aws4"
+}
