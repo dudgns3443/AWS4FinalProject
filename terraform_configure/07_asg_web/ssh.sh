@@ -29,46 +29,93 @@ chmod 777 web_log.sh
 
 echo "59 11 * * * root bash /root/web_log.sh" >> /etc/crontab
 
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+sudo rpm -U ./amazon-cloudwatch-agent.rpm
+sudo mkdir /usr/share/collectd
+sudo touch /usr/share/collectd/types.db 
+sudo cat > /opt/aws/amazon-cloudwatch-agent/bin/config.json << EOF
+ {
+                            "agent": {
+                                    "metric_collection_interval": 60,
+                                    "run_as_user": "root"
+                            },
+                            "logs": {
+                                    "logs_collected": {
+                                            "files": {
+                                                    "collect_list": [
+                                                            {
+                                                                    "file_path": "/var/log/messages",
+                                                                    "log_group_name": "web-log",
+                                                                    "log_stream_name": "{instance_id}"
+                                                            },
+                                                            {
+                                                                    "file_path": "/usr/share/nginx/error_log",
+                                                                    "log_group_name": "nginx_error",
+                                                                    "log_stream_name": "{instance_id}/nginx"
+                                                            }
+                                                    ]
+                                            }
+                                    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-cd
-wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-web.sh
-sudo chmod 744 cwagent-web.sh
-sudo sh ./cwagent-web.sh
+                            },
+                            "metrics":{
+                                    "namespace":"web",
+                                    "append_dimensions": {
+                                                            "AutoScalingGroupName": "${aws:AutoScalingGroupName}"
+                                    },
+                                    "metrics_collected":{
+                                            "collectd": {
+                                                    "metrics_aggregation_interval": 60
+                                                    },
+                                            "cpu":{
+                                                            "measurement":[
+                                                                    "cpu_usage_idle",
+                                                                    "cpu_usage_iowait",
+                                                                    "cpu_usage_user",
+                                                                    "cpu_usage_system"
+                                                            ],
+                                                            "metrics_collection_interval": 60,
+                                                            "resources": ["*"],
+                                                            "totalcpu": false
+                                            },
+                                            "disk":{
+                                                            "measurement":[
+                                                                    "used_percent",
+                                                                    "disk_free",
+                                                                    "disk_used_percent"
+                                                            ],
+                                                            "metrics_collection_interval": 60,
+                                                            "resources": ["*"]
+                                            },
+                                            "diskio": {
+                                                    "measurement": [
+                                                            "io_time"
+                                                            ],
+                                                            "metrics_collection_interval": 60,
+                                                            "resources": [
+                                                                    "*"
+                                                                    ]
+                                                    },
+                                                     "mem":{
+                                                            "measurement":[
+                                                                    "mem_used_percent",
+                                                                    "mem_free"
+                                                            ],
+                                                            "metrics_collection_interval": 60
+                                            },
+                                            "statsd": {
+                                                    "metrics_aggregation_interval": 60,
+                                                    "metrics_collection_interval": 60,
+                                                    "service_address": ":8125"
+                                            },
+                                            "swap": {
+                                                    "measurement": [
+                                                            "swap_used_percent"
+                                                            ],
+                                                            "metrics_collection_interval": 60
+                                            }
+                                    }
+                            }
+                        }
+EOF
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
