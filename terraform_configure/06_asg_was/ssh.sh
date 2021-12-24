@@ -63,7 +63,7 @@ sudo rpm -U ./amazon-cloudwatch-agent.rpm
 sudo mkdir /usr/share/collectd
 sudo touch /usr/share/collectd/types.db 
 sudo cat > /opt/aws/amazon-cloudwatch-agent/bin/config.json << EOF
- {
+                        {
                             "agent": {
                                     "metric_collection_interval": 60,
                                     "run_as_user": "root"
@@ -85,7 +85,9 @@ sudo cat > /opt/aws/amazon-cloudwatch-agent/bin/config.json << EOF
                             "metrics":{
                                     "namespace":"was",
                                     "append_dimensions": {
-                                                            "AutoScalingGroupName": "${aws:AutoScalingGroupName}"
+                                                            "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
+                                                            "InstanceId": "${aws:InstanceId}",
+                                                            "InstanceType": "${aws:InstanceType}"
                                     },
                                     "metrics_collected":{
                                             "collectd": {

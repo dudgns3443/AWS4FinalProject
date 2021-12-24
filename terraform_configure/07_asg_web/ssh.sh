@@ -62,7 +62,7 @@ sudo rpm -U ./amazon-cloudwatch-agent.rpm
 sudo mkdir /usr/share/collectd
 sudo touch /usr/share/collectd/types.db 
 sudo cat > /opt/aws/amazon-cloudwatch-agent/bin/config.json << EOF
- {
+                        {
                             "agent": {
                                     "metric_collection_interval": 60,
                                     "run_as_user": "root"
@@ -73,13 +73,13 @@ sudo cat > /opt/aws/amazon-cloudwatch-agent/bin/config.json << EOF
                                                     "collect_list": [
                                                             {
                                                                     "file_path": "/var/log/messages",
-                                                                    "log_group_name": "web-log",
+                                                                    "log_group_name": "was-log",
                                                                     "log_stream_name": "{instance_id}"
                                                             },
                                                             {
-                                                                    "file_path": "/usr/share/nginx/error_log",
+                                                                    "file_path": "/var/log/nginx/error.log",
                                                                     "log_group_name": "nginx_error",
-                                                                    "log_stream_name": "{instance_id}/nginx"
+                                                                    "log_stream_name": "{instance_id}"
                                                             }
                                                     ]
                                             }
@@ -87,9 +87,11 @@ sudo cat > /opt/aws/amazon-cloudwatch-agent/bin/config.json << EOF
 
                             },
                             "metrics":{
-                                    "namespace":"web",
+                                    "namespace":"was",
                                     "append_dimensions": {
-                                                            "AutoScalingGroupName": "${aws:AutoScalingGroupName}"
+                                                            "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
+                                                            "InstanceId": "${aws:InstanceId}",
+                                                            "InstanceType": "${aws:InstanceType}"
                                     },
                                     "metrics_collected":{
                                             "collectd": {
