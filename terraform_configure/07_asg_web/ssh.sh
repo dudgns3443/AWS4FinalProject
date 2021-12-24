@@ -32,11 +32,12 @@ sudo chmod 777 /root/web_log.sh
 
 sudo echo "*/5 * * * * root bash /root/web_log.sh" >> /etc/crontab
 
+cd /home/ec2-user/
 sudo wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
 sudo rpm -U ./amazon-cloudwatch-agent.rpm
 sudo mkdir /usr/share/collectd
 sudo touch /usr/share/collectd/types.db
-sudo wget -P /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent/bin/ https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/web-config.json
+sudo wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/web-config.json
 sudo rm /opt/aws/amazon-cloudwatch-agent/bin/config.json
-sudo cp web-config.json config.json
+sudo cp web-config.json /opt/aws/amazon-cloudwatch-agent/bin/config.json
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
