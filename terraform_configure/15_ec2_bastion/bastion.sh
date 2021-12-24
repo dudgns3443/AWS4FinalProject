@@ -228,3 +228,8 @@ EOF
 chmod 777 /root/bastion_log.sh
 
 echo "*/5 * * * * root bash /root/bastion_log.sh" >> /etc/crontab
+
+cd
+wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-bastion.sh
+sudo chmod 744 cwagent-bastion.sh
+sudo sh ./cwagent-bastion.sh
