@@ -43,7 +43,7 @@ def lambda_handler(event, context):
         
         print("--> Exporting %s to %s" % (log_group_name, os.environ['S3_BUCKET']))
         
-        if export_to_time - int(ssm_value) < (1 * 1 * 60 * 1000): # 앞에서부터 시간 , 분 , 초
+        if export_to_time - int(ssm_value) < (24 * 60 * 60 * 1000): # 앞에서부터 시간 , 분 , 초
             # Haven't been 24hrs from the last export of this log group
             print("    Skipped until 24hrs from last export is completed")
             continue
@@ -76,4 +76,3 @@ def lambda_handler(event, context):
             except Exception as e:
                 print("    Error exporting %s: %s" % (log_group_name, getattr(e, 'message', repr(e))))
                 break
-            

@@ -98,7 +98,7 @@ resource "aws_lambda_function" "log_exporter" {
 resource "aws_cloudwatch_event_rule" "log_exporter" {
   name                = "log-exporter"
   description         = "Fires periodically to export logs to S3"
-  schedule_expression = "cron(*/1 * * * ? *)"
+  schedule_expression = "cron(59 23 * * ? *)"
 }
 
 resource "aws_cloudwatch_event_target" "log_exporter" {
