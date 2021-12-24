@@ -34,14 +34,14 @@ systemctl start healthcare
 systemctl enable healthcare
 
 # key chmod 400
-chmod 400 /home/ec2-user/a4_key.pem
+sudo chmod 400 /home/ec2-user/a4_key.pem
 
 # KST 시간
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # was_log
 sudo -i
-cat > /root/was_log.sh << EOF
+sudo cat > /root/was_log.sh << EOF
 # was_sys_log
 sudo aws s3 cp /var/log/messages s3://bucket-log-kth/was_log/was_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 EOF
