@@ -215,12 +215,16 @@ EOF
 wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-was.yaml
 wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-web.yaml
 
+
+# key chmod 400
+sudo chmod 400 /home/ec2-user/a4_key.pem
+
 # KST 시간
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # bastion log 
 sudo -i
-cat > /root/bastion_log.sh << EOF
+sudo cat > /root/bastion_log.sh << EOF
 # bastion_sys_log
 sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 EOF
