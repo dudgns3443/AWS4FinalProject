@@ -4,41 +4,74 @@ resource "aws_s3_bucket" "bucket_log_kth" {
   force_destroy = true
   policy = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal":{
-        "AWS": "arn:aws:iam::600734575887:root"
-      },
-      "Action": [
-        "s3:PutObject",
-        "s3:*"
-        ],
-      "Resource": "arn:aws:s3:::bucket-log-kth/*"
-    },
-          {
-          "Action": "s3:GetBucketAcl",
-          "Effect": "Allow",
-          "Resource": "arn:aws:s3:::bucket-log-kth",
-          "Principal": { "Service": "logs.ap-northeast-2.amazonaws.com" }
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "arn:aws:iam::600734575887:root"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-log-kth/*"
       },
       {
-          "Action": "s3:PutObject" ,
-          "Effect": "Allow",
-          "Resource": "arn:aws:s3:::bucket-log-kth/*",
-          "Condition": { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
-          "Principal": { "Service": "logs.ap-northeast-2.amazonaws.com" }
+         "Effect": "Allow",
+         "Principal": {
+            "Service": "delivery.logs.amazonaws.com"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-log-kth/*",
+         "Condition": {
+            "StringEquals": {
+               "s3:x-amz-acl": "bucket-owner-full-control"
+            }
+         }
       },
       {
-          "Action": "s3:PutObject" ,
-          "Effect": "Allow",
-          "Resource": "arn:aws:s3:::bucket-log-kth/*",
-          "Condition": { "StringEquals": { "s3:x-amz-acl": "bucket-owner-full-control" } },
-          "Principal": { "AWS": "arn:aws:iam::600734575887:root" }
+         "Effect": "Allow",
+         "Principal": {
+            "Service": "delivery.logs.amazonaws.com"
+         },
+         "Action": "s3:GetBucketAcl",
+         "Resource": "arn:aws:s3:::bucket-log-kth"
+      },
+      {
+         "Effect": "Allow",
+         "Principal": {
+            "Service": "logs.ap-northeast-2.amazonaws.com"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-log-kth/*",
+         "Condition": {
+            "StringEquals": {
+               "s3:x-amz-acl": "bucket-owner-full-control"
+            }
+         }
+      },
+      {
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "arn:aws:iam::600734575887:root"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::bucket-log-kth/*",
+         "Condition": {
+            "StringEquals": {
+               "s3:x-amz-acl": "bucket-owner-full-control"
+            }
+         }
+      },
+      {
+         "Effect": "Allow",
+         "Principal": {
+            "Service": "logs.ap-northeast-2.amazonaws.com"
+         },
+         "Action": "s3:GetBucketAcl",
+         "Resource": "arn:aws:s3:::bucket-log-kth"
       }
-  ]
+   ]
 }
+
   EOF
 
   lifecycle_rule {

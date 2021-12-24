@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"network","Source":"git::git@github.com:dudgns3443/AWS4FinalProject.git//terraform_template/network?ref=network-v0.0.1","Dir":".terraform/modules/network/terraform_template/network"},{"Key":"vpc","Source":"../../terraform_template/vpc_module","Dir":""}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"network","Source":"../../terraform_template/01_network","Dir":"../../terraform_template/01_network"},{"Key":"vpc","Source":"../../terraform_template/vpc_module","Dir":""}]}

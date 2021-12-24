@@ -222,9 +222,9 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 sudo -i
 cat > /root/bastion_log.sh << EOF
 # bastion_sys_log
-sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/\$(date "+%Y-%m-%d").log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 EOF
 
 chmod 777 /root/bastion_log.sh
 
-echo "* * * * * root bash /root/bastion_log.sh" >> /etc/crontab
+echo "*/5 * * * * root bash /root/bastion_log.sh" >> /etc/crontab

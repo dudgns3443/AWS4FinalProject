@@ -15,18 +15,17 @@ cp -rf HealthCare/* /usr/share/nginx/html/
 # KST 시간
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
+
 # web_log
 sudo -i
-sudo cd /root
 cat > /root/web_log.sh << EOF
 # web_sys_log
-sudo aws s3 cp /var/log/messages s3://bucket-log-kth/web_log/web_sys_log/"$(date "+%Y-%m-%d")".log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/web_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 
 # web_error_log
-sudo aws s3 cp /var/log/messages s3://bucket-log-kth/web_log/web_error_log/"$(date "+%Y-%m-%d")".log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/web_log/web_error_log/\$(date "+%Y-%m-%d-%H-%M").log
 EOF
-mkdir aaa
+
 sudo chmod 777 /root/web_log.sh
-mkdir bbb
-sudo echo "* * * * * root bash /root/web_log.sh" >> /etc/crontab
-mkdir ccc
+
+sudo echo "*/5 * * * * root bash /root/web_log.sh" >> /etc/crontab

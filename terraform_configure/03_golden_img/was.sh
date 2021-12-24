@@ -42,9 +42,9 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 sudo -i
 cat > /root/was_log.sh << EOF
 # was_sys_log
-sudo aws s3 cp /var/log/messages s3://bucket-log-kth/was_log/was_sys_log/$(date "+%Y-%m-%d").log
+sudo aws s3 cp /var/log/messages s3://bucket-log-kth/was_log/was_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 EOF
 
 sudo chmod 777 /root/was_log.sh
 
-sudo echo "* * * * * root bash /root/was_log.sh" >> /etc/crontab
+sudo echo "*/5 * * * * root bash /root/was_log.sh" >> /etc/crontab
