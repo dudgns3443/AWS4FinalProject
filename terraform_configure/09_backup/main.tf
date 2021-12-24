@@ -31,4 +31,11 @@ module "backup" {
   retain_number   = 3
   target_tag_Name = "bastion"
   remote_bucket_name = var.remote_bucket_name
+  region = var.region
+  key = var.key
+  name = var.name
+  az = var.az
+  route_cidr_global = var.route_cidr_global
+  instance_type = var.instance_type
+  bastion_pip = var.bastion_pip
 }

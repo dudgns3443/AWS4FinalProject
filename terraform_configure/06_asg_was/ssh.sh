@@ -46,3 +46,29 @@ EOF
 chmod 777 was_log.sh
 
 echo "59 11 * * * root bash /root/was_log.sh" >> /etc/crontab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd
+wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-was.sh
+chmod 744 cwagent-was.sh
+sh ./cwagent-was.sh 

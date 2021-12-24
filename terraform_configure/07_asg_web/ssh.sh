@@ -28,3 +28,47 @@ EOF
 chmod 777 web_log.sh
 
 echo "59 11 * * * root bash /root/web_log.sh" >> /etc/crontab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd
+wget https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/cwagent-web.sh
+sudo chmod 744 cwagent-web.sh
+sudo sh ./cwagent-web.sh
