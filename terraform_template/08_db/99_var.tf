@@ -3,6 +3,18 @@ variable "db_allocated_storage" {
   default = 20
 }
 
+variable "db_max_allocated_storage" {
+  type = number
+  default = 100
+  
+}
+
+variable "db_availability_zone" {
+  type = string
+  default = "ap-northeast-2c"
+  
+}
+
 variable "db_storage_type" {
   type    = string
   default = "gp2"
@@ -35,7 +47,7 @@ variable "db_identifier" {
 
 variable "db_user" {
   type    = string
-  default = "a4"
+  default = "teamaws4"
 }
 
 variable "db_passwd" {
@@ -63,3 +75,4 @@ variable "maintenance_time" {
   type        = string
   description = "Fri:22:00-Fri:23:00"
 }
+

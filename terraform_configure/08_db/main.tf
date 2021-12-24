@@ -30,6 +30,30 @@ module "db" {
       az = var.az
       route_cidr_global = var.route_cidr_global
       instance_type = var.instance_type
-    #  bastion_pip = var.bastion_pip
+      bastion_pip = var.bastion_pip
+      
+    
+
+      db_allocated_storage = 20
+      db_max_allocated_storage = 100
+      db_storage_type = "gp2"
+      db_engine = "mysql"
+      db_engine_ver = "8.0"
+      db_instance_type = "db.t3.micro"
+      db_name = "a4db"
+      db_identifier = "a4db"
+
+      #dbname, db passwd
+      
+      db_user = data.aws_ssm_parameter.a4db_username.value    # SSM or Secret Manger
+      db_passwd = data.aws_ssm_parameter.a4db_passwd.value    # SSM or Secret Manger
+
+
+
+      # Multi Available Zone
+      
+
+      # Maintenace, Backup
       maintenance_time = "Fri:22:00-Fri:23:00"
+
 }

@@ -26,8 +26,7 @@ variable "route_cidr_global" {
 variable "instance_type" {
     type = string
 }
-/*
+
 variable "bastion_pip" {
     type = string
 }
-*/

@@ -1,16 +1,20 @@
 resource "aws_db_instance" "a4_final_db" {
+
   allocated_storage    = var.db_allocated_storage
+  max_allocated_storage = var.db_max_allocated_storage
   storage_type         = var.db_storage_type
   engine               = var.db_engine
   engine_version       = var.db_engine_ver
-  instance_class       = var.db_instance_type
+  instance_class       = var.db_instance_type  
   name                 = var.db_name
   identifier           = var.db_identifier
+###############################################################
   username             = var.db_user   # SSM or Secrete Manager
   password             = var.db_passwd # SSM or Secrete Manager
+################################################################
   parameter_group_name = var.db_parameter_group_name
-  availability_zone    = "${var.region}${var.az[0]}"
-  # multi_az = true
+  # availability_zone   = "ap-northeast-2c"
+  multi_az = true
   db_subnet_group_name   = aws_db_subnet_group.a4_dbsg.id
   vpc_security_group_ids = [data.terraform_remote_state.sg.outputs.db_sg_id]
   skip_final_snapshot    = true
@@ -28,7 +32,7 @@ resource "aws_db_instance" "a4_final_db" {
   backup_retention_period  = var.retention_period # 백업 보존 기간       
   delete_automated_backups = true                 # default는 true db인스턴스가 생성되고 백업파일을 삭제할 것 인지    
 
-  /*
+  /* 시점 복원 
     restore_to_point_in_time {
         
         source_db_instance_identifier = var.db_identifier
@@ -39,9 +43,9 @@ resource "aws_db_instance" "a4_final_db" {
 
 
   # 자동으로 마지막으로 생성된 백업 파일로 복구할 것 인지
-  # 유지 관리
+  # 유지 관리 
   maintenance_window         = var.maintenance_time # 유지 보수할 시간 설정 : ex)매주 월요일 AM 09:00 ~ AM 10:30 로 설정
-  auto_minor_version_upgrade = true
+  auto_minor_version_upgrade = false  # true 일 경우 최신화된 minor 버전 자동 업그레이드 
   # 클라우드 왓치 로그
   enabled_cloudwatch_logs_exports = ["error", "audit", "general"]
 }
@@ -61,3 +65,4 @@ resource "aws_db_snapshot" "a4_db_snapshot" {
   db_instance_identifier = aws_db_instance.a4_final_db.id
   db_snapshot_identifier = "aws4dbsnapshot"
 }
+
