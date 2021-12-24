@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"sg","Source":"../../terraform_template/sg_module","Dir":"../../terraform_template/sg_module"},{"Key":"","Source":"","Dir":"."}]}
+{"Modules":[{"Key":"sg","Source":"../../terraform_template/02_sg_module","Dir":"../../terraform_template/02_sg_module"},{"Key":"","Source":"","Dir":"."}]}

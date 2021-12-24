@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"db","Source":"../../terraform_template/db","Dir":"../../terraform_template/db"},{"Key":"","Source":"","Dir":"."},{"Key":"a4_golden_img_module","Source":"../../terraform_template/db","Dir":"../../terraform_template/db"}]}
+{"Modules":[{"Key":"db","Source":"../../terraform_template/08_db","Dir":"../../terraform_template/08_db"},{"Key":"","Source":"","Dir":"."},{"Key":"a4_golden_img_module","Source":"../../terraform_template/db","Dir":"../../terraform_template/db"}]}
