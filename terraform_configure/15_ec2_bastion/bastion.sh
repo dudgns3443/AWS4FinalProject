@@ -207,7 +207,7 @@ cat > s3_mount.yaml << EOF
                     path: /s3fs
                     state: directory
           - name: mount
-            shell: /usr/local/bin/s3fs bucket-log-kth /s3fs
+            shell: /usr/local/bin/s3fs bucket-log-a4 /s3fs
             args:
                     executable: /bin/bash
 EOF

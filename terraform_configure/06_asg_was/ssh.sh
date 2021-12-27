@@ -43,7 +43,7 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 # sudo -i
 # sudo cat > /root/was_log.sh << EOF
 # # was_sys_log
-# sudo aws s3 cp /var/log/messages s3://bucket-log-kth/was_log/was_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
+# sudo aws s3 cp /var/log/messages s3://bucket-log-a4/was_log/was_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 # EOF
 
 # sudo chmod 777 /root/was_log.sh
