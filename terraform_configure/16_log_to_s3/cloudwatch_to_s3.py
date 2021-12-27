@@ -2,6 +2,7 @@ import boto3
 import os
 from pprint import pprint
 import time
+import datetime
 
 logs = boto3.client('logs')
 ssm = boto3.client('ssm')
@@ -62,7 +63,7 @@ def lambda_handler(event, context):
                 ssm_response = ssm.put_parameter(
                     Name=ssm_parameter_name,
                     Type="String",
-                    Value=str(export_to_time),
+                    Value=str(datetime.datetime.today()),
                     Overwrite=True)
 
                 break

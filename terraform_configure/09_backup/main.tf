@@ -25,7 +25,7 @@ module "backup" {
   purpose         = "dlm"
   role            = "role"
   resource_type   = "INSTANCE"
-  interval        = 1
+  interval        = 24
   interval_unit   = "HOURS"
   start_time      = "09:00"
   retain_number   = 3
