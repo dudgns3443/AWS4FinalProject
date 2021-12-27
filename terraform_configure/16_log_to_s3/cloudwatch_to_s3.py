@@ -63,7 +63,7 @@ def lambda_handler(event, context):
                 ssm_response = ssm.put_parameter(
                     Name=ssm_parameter_name,
                     Type="String",
-                    Value=str(datetime.datetime.today()),
+                    Value=export_to_time,
                     Overwrite=True)
 
                 break
