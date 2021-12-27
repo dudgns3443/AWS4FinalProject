@@ -1,6 +1,6 @@
 #EFS Security-Group
 resource "aws_security_group" "a4_efs_sg" {
-  vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_web_id
+  vpc_id = data.terraform_remote_state.network.outputs.a4_vpc_was_id
   name = "EFS security group"
   description = "EFS-2049"
   tags = { "Name" = "efs-sg"}
