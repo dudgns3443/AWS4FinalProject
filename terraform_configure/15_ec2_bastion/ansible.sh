@@ -107,7 +107,7 @@ http {
         #     proxy_set_header Host $http_host; 
         # }
         location /nlb/ { 
-            proxy_pass http://a4-nlb-c2fa7f40e6916a9b.elb.ap-northeast-2.amazonaws.com:8100/; 
+            proxy_pass http://a4-nlb-2ccfc16b8c59f496.elb.ap-northeast-2.amazonaws.com:8100/; 
         }        
     }
 

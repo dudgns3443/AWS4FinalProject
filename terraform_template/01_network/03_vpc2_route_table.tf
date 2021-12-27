@@ -41,3 +41,21 @@ resource "aws_route_table_association" "a4_ngass_was" {
   subnet_id      = aws_subnet.a4_priwas[count.index].id
   route_table_id = aws_route_table.a4_ngrt_was.id
 }
+
+resource "aws_route_table" "a4_dbrt" {
+  vpc_id = aws_vpc.a4_vpc_was.id
+  route {
+    cidr_block = var.vpc_cidr_web
+    vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peering.id
+  }
+
+  tags = {
+    "Name" = "${var.name}-dbrt"
+  }
+}
+
+resource "aws_route_table_association" "a4_db_was" {
+  count          = length(var.pri_cidr_was)
+  subnet_id      = aws_subnet.a4_pridb[count.index].id
+  route_table_id = aws_route_table.a4_dbrt.id
+}
