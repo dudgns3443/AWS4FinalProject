@@ -6,7 +6,7 @@ resource "aws_lb" "a4_nlb" {
   subnets = [data.terraform_remote_state.network.outputs.a4_sub_pri_was[0].id,data.terraform_remote_state.network.outputs.a4_sub_pri_was[1].id]
 
   #   access_logs {
-  #   bucket  = "bucket-log-kth"
+  #   bucket  = "bucket-log-a4"
   #   prefix  = "nlb"
   #   enabled = true
   # }

@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "bucket_log_kth" {
-  bucket = "bucket-log-kth"
+resource "aws_s3_bucket" "bucket_log_a4" {
+  bucket = "bucket-log-a4"
   acl    = "private"
   force_destroy = true
   policy = <<EOF
@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
             "AWS": "arn:aws:iam::600734575887:root"
          },
          "Action": "s3:PutObject",
-         "Resource": "arn:aws:s3:::bucket-log-kth/*"
+         "Resource": "arn:aws:s3:::bucket-log-a4/*"
       },
       {
          "Effect": "Allow",
@@ -20,7 +20,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
             "Service": "delivery.logs.amazonaws.com"
          },
          "Action": "s3:PutObject",
-         "Resource": "arn:aws:s3:::bucket-log-kth/*",
+         "Resource": "arn:aws:s3:::bucket-log-a4/*",
          "Condition": {
             "StringEquals": {
                "s3:x-amz-acl": "bucket-owner-full-control"
@@ -33,7 +33,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
             "Service": "delivery.logs.amazonaws.com"
          },
          "Action": "s3:GetBucketAcl",
-         "Resource": "arn:aws:s3:::bucket-log-kth"
+         "Resource": "arn:aws:s3:::bucket-log-a4"
       },
       {
          "Effect": "Allow",
@@ -41,7 +41,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
             "Service": "logs.ap-northeast-2.amazonaws.com"
          },
          "Action": "s3:PutObject",
-         "Resource": "arn:aws:s3:::bucket-log-kth/*",
+         "Resource": "arn:aws:s3:::bucket-log-a4/*",
          "Condition": {
             "StringEquals": {
                "s3:x-amz-acl": "bucket-owner-full-control"
@@ -54,7 +54,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
             "AWS": "arn:aws:iam::600734575887:root"
          },
          "Action": "s3:PutObject",
-         "Resource": "arn:aws:s3:::bucket-log-kth/*",
+         "Resource": "arn:aws:s3:::bucket-log-a4/*",
          "Condition": {
             "StringEquals": {
                "s3:x-amz-acl": "bucket-owner-full-control"
@@ -67,7 +67,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
             "Service": "logs.ap-northeast-2.amazonaws.com"
          },
          "Action": "s3:GetBucketAcl",
-         "Resource": "arn:aws:s3:::bucket-log-kth"
+         "Resource": "arn:aws:s3:::bucket-log-a4"
       }
    ]
 }
@@ -96,7 +96,7 @@ resource "aws_s3_bucket" "bucket_log_kth" {
 
 # s3 access point
 # resource "aws_s3_access_point" "s3_access_point" {
-#   bucket = aws_s3_bucket.bucket_log_kth.name
+#   bucket = aws_s3_bucket.bucket_log_a4.name
 #   name   = "s3-access-point"
 
 #   # VPC must be specified for S3 on Outposts

@@ -41,7 +41,7 @@ resource "aws_iam_role_policy" "web_was_policy" {
           "ec2:Describe*",
           "elasticache:Describe*"
          ],
-         "Resource": "arn:aws:s3:::bucket-log-kth/*"
+         "Resource": "arn:aws:s3:::bucket-log-a4/*"
       },
        {
             "Effect": "Allow",
