@@ -19,15 +19,15 @@ terraform {
 
 
 module "iam" {
-  source             = "../../terraform_template/00_iam_role"
-#  remote_bucket_name = "aws4-terraform-state"
+  source = "../../terraform_template/00_iam_role"
+  #  remote_bucket_name = "aws4-terraform-state"
 
   remote_bucket_name = var.remote_bucket_name
-  region            = var.region
-  key               = var.key
-  name              = var.name
-  az                = var.az
-  route_cidr_global = var.route_cidr_global
-  instance_type     = var.instance_type
-  bastion_pip       = var.bastion_pip
+  region             = var.region
+  key                = var.key
+  name               = var.name
+  az                 = var.az
+  route_cidr_global  = var.route_cidr_global
+  instance_type      = var.instance_type
+  bastion_pip        = var.bastion_pip
 }

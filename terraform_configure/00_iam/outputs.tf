@@ -3,8 +3,8 @@ output "describe_profile" {
 }
 
 output "dlm_iam_role" {
-    value = module.iam.dlm_iam_role 
-  }
+  value = module.iam.dlm_iam_role
+}
 
 
 # web_role made by kth
