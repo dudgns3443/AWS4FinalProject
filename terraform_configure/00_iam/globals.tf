@@ -1,37 +1,37 @@
 
 variable "region" {
-    type = string
-    default = "ap-northeast-2"
+  type    = string
+  default = "ap-northeast-2"
 }
 variable "key" {
-    type = string
-    default = "a4_key"
+  type    = string
+  default = "a4_key"
 }
 variable "name" {
-    type = string
-    default = "a4"
+  type    = string
+  default = "a4"
 }
 variable "remote_bucket_name" {
-  type        = string
-  default     = "aws4-terraform-state"
+  type    = string
+  default = "aws4-terraform-state"
 }
 
 variable "az" {
-    type = list
-    default = ["a","c"]
+  type    = list(any)
+  default = ["a", "c"]
 }
 
 variable "route_cidr_global" {
-    type = string
-    default = "0.0.0.0/0"
+  type    = string
+  default = "0.0.0.0/0"
 }
 
 variable "instance_type" {
-    type = string
-    default = "t2.micro"
+  type    = string
+  default = "t2.micro"
 }
 
 variable "bastion_pip" {
-    type = string
-    default = "10.10.0.10"
+  type    = string
+  default = "10.10.0.10"
 }
