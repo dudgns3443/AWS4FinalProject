@@ -40,3 +40,17 @@ resource "aws_autoscaling_attachment" "a4_web_asatt" {
     autoscaling_group_name = aws_autoscaling_group.a4_web_auto.id
     alb_target_group_arn = data.terraform_remote_state.alb.outputs.a4_http_albtg_arn
 }
+
+resource "aws_autoscaling_policy" "a4-web-ap" {
+  name                   = "a4-web-policy"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.a4_web_auto.name
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+
+    target_value = "60"
+
+  }
+}
