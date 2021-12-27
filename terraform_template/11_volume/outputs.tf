@@ -4,5 +4,5 @@
 
 
 output "a4_s3_id" {
-  value = aws_s3_bucket.bucket_log_kth.id
+  value = aws_s3_bucket.bucket_log_a4.id
 }

@@ -9,7 +9,7 @@ resource "aws_lb" "a4_alb" {
   #subnets = [aws_subnet.a4_pub[0].id,aws_subnet.a4_pub[1].id]
   
   access_logs {
-    bucket  = "bucket-log-kth"
+    bucket  = "bucket-log-a4"
     prefix  = "alb"
     enabled = true
   }
@@ -50,7 +50,7 @@ resource "aws_lb_listener" "a4_http_alblis" {
 
 # s3 access point made by kth
 resource "aws_s3_access_point" "s3_access_point" {
-  bucket = "bucket-log-kth"
+  bucket = "bucket-log-a4"
   name   = "s3-access-point"
 
   # VPC must be specified for S3 on Outposts

@@ -62,7 +62,7 @@ resource "aws_iam_role_policy" "log_exporter" {
             "s3:PutObject",
             "s3:PutObjectACL"
         ],
-        "Resource": "arn:aws:s3:::bucket-log-kth/*"
+        "Resource": "arn:aws:s3:::bucket-log-a4/*"
     },
     {
         "Sid": "AllowCrossAccountBucketAcc",
@@ -71,7 +71,7 @@ resource "aws_iam_role_policy" "log_exporter" {
             "s3:PutBucketAcl",
             "s3:GetBucketAcl"
         ],
-        "Resource": "arn:aws:s3:::bucket-log-kth"
+        "Resource": "arn:aws:s3:::bucket-log-a4"
     }
   ]
 }
@@ -90,7 +90,7 @@ resource "aws_lambda_function" "log_exporter" {
 
   environment {
     variables = {
-      S3_BUCKET = "bucket-log-kth",
+      S3_BUCKET = "bucket-log-a4",
     }
   }
 }

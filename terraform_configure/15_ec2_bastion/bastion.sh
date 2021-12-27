@@ -3,6 +3,8 @@
 
 wget -P /home/ec2-user/ https://a4-stuff-store.s3.ap-northeast-2.amazonaws.com/a4_key.pem
 chmod 444 /home/ec2-user/a4_key.pem
+<<<<<<< HEAD
+=======
 amazon-linux-extras install -y ansible2
 cat > s3_mount.yaml << EOF
 ---
@@ -48,7 +50,8 @@ cat > s3_mount.yaml << EOF
                     path: /s3fs
                     state: directory
           - name: mount
-            shell: /usr/local/bin/s3fs bucket-log-kth /s3fs
+            shell: /usr/local/bin/s3fs bucket-log-a4 /s3fs
             args:
                     executable: /bin/bash
 EOF
+>>>>>>> 5f9801ff505b3beb507933c8b3c77a83c042a946
