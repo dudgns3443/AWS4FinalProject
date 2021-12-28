@@ -57,13 +57,13 @@ def lambda_handler(event, context):
                     fromTime=int(ssm_value),
                     to=export_to_time,
                     destination=os.environ['S3_BUCKET'],
-                    destinationPrefix='exported_cloudwatch_logs/' + log_group_name.strip('/')
+                    destinationPrefix='exported_cloudwatch_logs/' + log_group_name.strip('/')+'/'+str(datetime.datetime.today())
                 )
                 print("    Task created: %s" % response['taskId'])
                 ssm_response = ssm.put_parameter(
                     Name=ssm_parameter_name,
                     Type="String",
-                    Value=str(datetime.datetime.today()),
+                    Value=export_to_time,
                     Overwrite=True)
 
                 break
