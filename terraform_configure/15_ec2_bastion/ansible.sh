@@ -205,7 +205,7 @@ cat > s3_mount.yaml << EOF
                     path: /s3fs
                     state: directory
           - name: mount
-            shell: /usr/local/bin/s3fs bucket-log-kth /s3fs
+            shell: /usr/local/bin/s3fs bucket-log-a4 /s3fs
             args:
                     executable: /bin/bash
 EOF
@@ -220,13 +220,13 @@ sudo chmod 400 /home/ec2-user/a4_key.pem
 # KST 시간
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
-# bastion log 
-# sudo -i
-# sudo cat > /root/bastion_log.sh << EOF
-# # bastion_sys_log
-# sudo aws s3 cp /var/log/messages s3://bucket-log-kth/bastion_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
-# EOF
+bastion log 
+sudo -i
+sudo cat > /root/bastion_log.sh << EOF
+# bastion_sys_log
+sudo aws s3 cp /var/log/messages s3://bucket-log-a4/bastion_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
+EOF
 
-# chmod 777 /root/bastion_log.sh
+chmod 777 /root/bastion_log.sh
 
-# echo "*/5 * * * * root bash /root/bastion_log.sh" >> /etc/crontab
+echo "*/5 * * * * root bash /root/bastion_log.sh" >> /etc/crontab
