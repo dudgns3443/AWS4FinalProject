@@ -35,7 +35,8 @@ resource "aws_iam_role_policy" "describe_policy" {
             "elasticache:Describe*",
             "rds:Describe*",
             "route53:ListHostedZones",
-            "route53:ListResourceRecordSets"
+            "route53:ListResourceRecordSets",
+            "s3:*"
          ],
          "Resource": "*"
       }
