@@ -37,7 +37,7 @@ resource "aws_iam_role_policy" "web_was_policy" {
       {
          "Effect": "Allow",
          "Action": [
-          "s3:PutObject",
+          "s3:*",
           "ec2:Describe*",
           "elasticache:Describe*"
          ],

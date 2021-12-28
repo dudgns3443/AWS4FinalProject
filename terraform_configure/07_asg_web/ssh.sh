@@ -19,18 +19,18 @@ sudo chmod 400 /home/ec2-user/a4_key.pem
 sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # web_log
-# sudo -i
-# sudo cat > /root/web_log.sh << EOF
-# # web_sys_log
-# sudo aws s3 cp /var/log/messages s3://bucket-log-a4/web_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
+sudo -i
+sudo cat > /root/web_log.sh << EOF
+# web_sys_log
+sudo aws s3 cp /var/log/messages s3://bucket-log-a4/web_log/web_sys_log/\$(date "+%Y-%m-%d-%H-%M").log
 
-# # web_error_log
-# sudo aws s3 cp /var/log/messages s3://bucket-log-a4/web_log/web_error_log/\$(date "+%Y-%m-%d-%H-%M").log
-# EOF
+# web_error_log
+sudo aws s3 cp /var/log/messages s3://bucket-log-a4/web_log/web_error_log/\$(date "+%Y-%m-%d-%H-%M").log
+EOF
 
-# sudo chmod 777 /root/web_log.sh
+sudo chmod 777 /root/web_log.sh
 
-# sudo echo "*/5 * * * * root bash /root/web_log.sh" >> /etc/crontab
+sudo echo "*/5 * * * * root bash /root/web_log.sh" >> /etc/crontab
 
 cd /home/ec2-user/
 sudo wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm

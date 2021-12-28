@@ -39,3 +39,17 @@ resource "aws_autoscaling_attachment" "a4_was_asatt" {
     autoscaling_group_name = aws_autoscaling_group.a4_was_auto.id
     alb_target_group_arn = data.terraform_remote_state.nlb.outputs.a4_tomcat_nlbtg_arn
 }
+
+resource "aws_autoscaling_policy" "a4-was-ap" {
+  name                   = "a4-was-policy"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.a4_was_auto.name
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+
+    target_value = "60"
+
+  }
+}
