@@ -31,7 +31,7 @@ resource "aws_dlm_lifecycle_policy" "a4_dlm_lfc_pol" {
       }
       # 타겟 태그
       target_tags = {
-          Name = "bastion"
+          Name = "control"
       }
 
     }
@@ -39,4 +39,3 @@ resource "aws_dlm_lifecycle_policy" "a4_dlm_lfc_pol" {
      "Name" = "${var.team}-${var.purpose}"
  }
 }
-
