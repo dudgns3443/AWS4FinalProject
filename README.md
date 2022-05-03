@@ -1,4 +1,4 @@
-# Healthcare-server-provisioning-by-terraform-AWS무듈
+# Healthcare-server-provisioning-by-terraform-AWS
 모듈화 - 각 리소스간의 coupling을 줄이고 cohesion을 높이기 위함(협업을 수월하게해 생산성을 높이기위함)
 
 각 모듈들은 taging을 이용해 versioning을 구현
