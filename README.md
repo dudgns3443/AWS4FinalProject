@@ -6,7 +6,7 @@
 
 terraform_template : 실제 모듈, 리소스들이 들어있는 곳 변경가능성이 높은 값들은 변수로 빼냄
 
-ㄴ 0X_resourcename : 각 모듈을 폴더단위로 분리
+ㄴ [0X_resourcename] : 각 모듈을 폴더단위로 분리
 
     ㄴ resoucename.tf : 실제 리소스들의 생성코드들이 작성되어있음
   
@@ -21,7 +21,7 @@ terraform_template : 실제 모듈, 리소스들이 들어있는 곳 변경가�
   
 terraform_config : state를 저장할 remote 저장소, 실제 리소스를 실행할 profile, 변수들의 실제 값들으 정해서 실제 실행을 하는곳
 
-ㄴ 0X_resoucename : 각 모듈을 폴더단위로 분리
+ㄴ 0X_[resoucename] : 각 모듈을 폴더단위로 분리
 
     ㄴmain.tf : main provider 선택, 계정 선택, remote_state 저장소 선택, 실제 실행할 모듈 지정, 사용할 변수값입력
               등과 같은 실제 모듈을 실행하는 곳
