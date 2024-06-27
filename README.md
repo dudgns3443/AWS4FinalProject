@@ -3,10 +3,10 @@
 
 각 모듈들은 taging을 이용해 versioning을 구현
 (각 모듈별로 레포지토리를 따로 두는 것이 더 이상적)
-
+```
 terraform_template : 실제 모듈, 리소스들이 들어있는 곳 변경가능성이 높은 값들은 변수로 빼냄
 
-ㄴ [0X_resourcename] : 각 모듈을 폴더단위로 분리
+ㄴ 0X_[resourcename] : 각 모듈을 폴더단위로 분리
 
     ㄴ resoucename.tf : 실제 리소스들의 생성코드들이 작성되어있음
   
@@ -31,5 +31,5 @@ terraform_config : state를 저장할 remote 저장소, 실제 리소스를 실�
     ㄴoutputs.tf : 실제 다른 모듈들이 참조할 수 있게 변수를 노출시켜주기 위한 곳 여기서 정의한 변수이름으로만 참조가능
                  (template의 outputs 변수이름은 다른 모듈에서 참조불가능)
                  
-
+```
 remote_state : terraform의 상태파일(terraform.state)을 각 사용자가 공유하기위해 s3에 저장
